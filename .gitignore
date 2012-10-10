@@ -1,0 +1,73 @@
+tmp
+recycle
+.DS_Store
+
+Doc/Example/*.*
+!Doc/Example/*.tex
+!Doc/Example/*.sty
+!Doc/Example/*.gst
+!Doc/Example/.Renviron
+Doc/Example/Figs/pdf/pgf*.*
+Doc/Example/Figs/gnuplot
+Doc/Example/Figs/tmp
+Doc/Example/Figs/Src/*.*
+!Doc/Example/Figs/Src/*.tikz
+!Doc/Example/Figs/Src/*.tex
+!Doc/Example/Figs/Src/*.txt
+!Doc/Example/Figs/Src/*.dat
+!Doc/Example/Figs/Src/*.R
+!Doc/Example/Figs/Src/.Renviron
+!Doc/Example/Figs/Src/*.gp
+Doc/Example/tmp
+Doc/Example/recycle
+Doc/Example/test
+
+Doc/Example/Code/*.*
+!Doc/Example/Code/*.m
+Doc/Example/Code/Chap02/*.*
+!Doc/Example/Code/Chap02/*.m
+Doc/Example/Code/Chap03/*.*
+!Doc/Example/Code/Chap03/*.m
+Doc/Example/Code/Chap04/*.*
+!Doc/Example/Code/Chap04/*.m
+Doc/Example/Code/Chap05/*.*
+!Doc/Example/Code/Chap05/*.m
+Doc/Example/Code/Chap06/*.*
+!Doc/Example/Code/Chap06/*.m
+
+
+# Draft/*.*
+# !Draft/*.tex
+# !Draft/*.sty
+# !Draft/*.gst
+# !Draft/.Renviron
+# Draft/Figs/pdf/pgf*.*
+# Draft/Figs/gnuplot
+# Draft/Figs/tmp
+# Draft/Figs/Src/*.*
+# !Draft/Figs/Src/*.tikz
+# !Draft/Figs/Src/*.tex
+# !Draft/Figs/Src/*.txt
+# !Draft/Figs/Src/*.dat
+# !Draft/Figs/Src/*.R
+# !Draft/Figs/Src/.Renviron
+# !Draft/Figs/Src/*.gp
+# Draft/tmp
+# Draft/recycle
+# Draft/test
+# 
+# Draft/Code/*.*
+# !Draft/Code/*.m
+# Draft/Code/Chap02/*.*
+# !Draft/Code/Chap02/*.m
+# Draft/Code/Chap03/*.*
+# !Draft/Code/Chap03/*.m
+# Draft/Code/Chap04/*.*
+# !Draft/Code/Chap04/*.m
+# Draft/Code/Chap05/*.*
+# !Draft/Code/Chap05/*.m
+# Draft/Code/Chap06/*.*
+# !Draft/Code/Chap06/*.m
+# 
+# Ref/*.*
+# !Ref/*.bib

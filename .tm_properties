@@ -1,0 +1,21 @@
+# Settings
+tabSize              = 4
+projectDirectory     = "$CWD"
+windowTitle          = "$TM_DISPLAYNAME — ${CWD/^.*\///}"
+
+localeExcludeFiles   = "*.tmproj,*.sublime*,*.gz"
+excludeInFileChooser = "{$excludeInFileChooser,$localeExcludeFiles}"
+excludeInBrowser     = "{$excludeInBrowser,$localeExcludeFiles}"
+
+# include     = "{$include, *.pdf}"
+# includeInFileChooser = "{$inlcueInFileChooser,.gitignore}"
+
+# Basic Settings
+#
+# fontName         = "Monaco"
+# fontSize         = 14
+
+
+TM_MAKE_FILE         = '${CWD}/Makefile'
+# TM_MAKE_TARGET       = 'cntmp'
+
