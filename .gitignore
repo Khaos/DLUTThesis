@@ -35,6 +35,10 @@ Doc/Example/Code/Chap05/*.*
 Doc/Example/Code/Chap06/*.*
 !Doc/Example/Code/Chap06/*.m
 
+!TeX/*.dtx
+
+test
+
 
 # Draft/*.*
 # !Draft/*.tex
