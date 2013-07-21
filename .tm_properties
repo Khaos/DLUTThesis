@@ -2,10 +2,12 @@
 tabSize              = 4
 projectDirectory     = "$CWD"
 windowTitle          = "$TM_DISPLAYNAME — ${CWD/^.*\///}"
+windowTitle          = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Users\/username\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Users\/username/~/}:${1/\A(?=.)/ – /}}/}"
 
-localeExcludeFiles   = "*.tmproj,*.sublime*,*.gz"
-excludeInFileChooser = "{$excludeInFileChooser,$localeExcludeFiles}"
-excludeInBrowser     = "{$excludeInBrowser,$localeExcludeFiles}"
+
+localExcludeFiles    = "*.tmproj,*.sublime*,*.gz"
+excludeInFileChooser = "{$excludeInFileChooser,$localExcludeFiles}"
+excludeInBrowser     = "{$excludeInBrowser,$localExcludeFiles}"
 
 # include     = "{$include, *.pdf}"
 # includeInFileChooser = "{$inlcueInFileChooser,.gitignore}"
