@@ -1,6 +1,23 @@
 tmp
+test
 recycle
 .DS_Store
+
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lol
+*.lot
+*.nav
+*.out
+*.pdf
+*.snm
+*.synctex.gz
+*.toc
 
 Doc/Example/*.*
 !Doc/Example/*.tex
@@ -37,8 +54,6 @@ Doc/Example/Code/Chap06/*.*
 
 !TeX/*.dtx
 
-test
-
 
 # Draft/*.*
 # !Draft/*.tex
@@ -59,7 +74,7 @@ test
 # Draft/tmp
 # Draft/recycle
 # Draft/test
-# 
+#
 # Draft/Code/*.*
 # !Draft/Code/*.m
 # Draft/Code/Chap02/*.*
@@ -72,6 +87,6 @@ test
 # !Draft/Code/Chap05/*.m
 # Draft/Code/Chap06/*.*
 # !Draft/Code/Chap06/*.m
-# 
+#
 # Ref/*.*
 # !Ref/*.bib

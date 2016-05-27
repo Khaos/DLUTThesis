@@ -1,0 +1,55 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% DLUTThesis.tex    The Main File for DLUT Doctor Thesis
+%%
+%% Created by Dazhi Jiang, 2016-05-27 13:15:22 +0800 (Fri, 27 May 2016)
+%% Copyright (c) 2016 Dazhi Jiang All Rights Reserved.
+
+%% TextMate Settings
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-options = -shell-escape -interaction=nonstopmode -file-line-error
+
+%% TeXstudio/ATOM Settings
+% !TEX encoding = utf8
+% !TEX program = xelatex
+% !TEX root = DLUTThesis.tex
+
+
+\documentclass[11pt,a4paper,extrafontsizes,oldfontcommands,twoside]{dlutthesis}
+
+\begin{document}
+\maxtocdepth{subsection} % put 3 levels into the ToC
+\frontmatter
+\thetitlepage
+\approvalpage
+\asuabstract
+abstract text
+%% if you have any acknowledgements, then
+\asuacknowledgements
+acknowledgements text
+% \asudedication{ text } % if you want a dedication
+\tableofcontents
+% \listoffigures % if you have any figures
+% \listoftables % if you have any tables
+%%% if you have more prelim sections, then
+%%% \clearpage
+%%% \pagestyle{plain}
+%%% \prelimtitle{title} text % for each section before main text
+\mainmatter
+\pagestyle{asu}
+\chapter{中文} % start of your main text
+.. report on lots of incredible work, now you are on your
+own until..
+%% if endnotes then
+\printpagenotes
+%% if a bibliography then
+\begin{thebibliography}...\end{thebibliography}
+%% if appendices, then
+\appendix
+\chapter{...}
+...
+%% if Biographical sketch then
+\begin{biosketch} ... \end{biosketch}
+
+\end{document}
