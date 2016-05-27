@@ -32,6 +32,9 @@
 
 %% dlutthesis.cls segments
 %% 0. Import dlutthesis.cfg
+%% 1. Font options
+%% 2. Document layouts
+
 %% 1. Import and configure LaTeX packages.
 %% 2. Define general-purpose LaTeX commands.
 %% 3. Configure the imported packages, also extend LaTeX command in dlutthesis
@@ -41,7 +44,24 @@
 %% 0. Import dlutthesis.cfg
 %% ==================================================
 
-\RequirePackage[UTF8, heading = true]{ctex}
+%% ==================================================
+%% 1. Import dlutthesis.cfg
+%% ==================================================
+
+%% 1.1 CTeX
+\RequirePackage[UTF8, scheme=chinese]{ctex}
+
+%% 1.2 Font packages
+\RequriePackage{xltxtra}
+
+%% 1.3 xeCJK options
+% \RequriePackage[CJKnumber,CJKchecksingle,BoldFont]{xeCJK}
+
+%% Font settings
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont[Mapping=tex-text]{Arial}
+\setmonofont{Consolas}
+
 
 \endinput
 
