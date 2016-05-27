@@ -45,23 +45,28 @@
 %% ==================================================
 
 %% ==================================================
-%% 1. Import dlutthesis.cfg
+%% 1. Font options
 %% ==================================================
+%% 1.1 Before 'ctex'
+\RequirePackage{xltxtra}
 
-%% 1.1 CTeX
-\RequirePackage[UTF8, scheme=chinese]{ctex}
-
-%% 1.2 Font packages
-\RequriePackage{xltxtra}
+%% 1.2 CTeX
+\RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
 
 %% 1.3 xeCJK options
-% \RequriePackage[CJKnumber,CJKchecksingle,BoldFont]{xeCJK}
+\xeCJKsetup{CheckSingle = true, AutoFakeBold = true}
 
-%% Font settings
+%% 1.4 Font settings
+%% 1.4.1 English fonts
 \setmainfont[Mapping=tex-text]{Times New Roman}
 \setsansfont[Mapping=tex-text]{Arial}
 \setmonofont{Consolas}
+%% 1.4.2 CJK fonts
+%%   Declare new font family
+\setCJKfamilyfont{xkai}{STXingkai}
 
+%% 1.5 Other font packages
+\RequirePackage{CJKnumb}
 
 \endinput
 
