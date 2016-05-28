@@ -68,6 +68,33 @@
 %% 1.5 Other font packages
 \RequirePackage{CJKnumb}
 
+
+%% ==================================================
+%% 2. Document layouts
+%% ==================================================
+%% set up the page layout%
+%% \settrimmedsize is incompatible with the command,
+%%   \AtBeginDocument{\usepackage{graphicx}}
+%% which is included in the package 'mathtools'.
+\settrimmedsize{297mm}{210mm}{*} % a4paper: 297mm * 210mm%
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{222mm}{161mm}{*}
+\setulmargins{40mm}{*}{*}
+\setlrmargins{28mm}{*}{*}
+% \setmarginnotes{17pt}{51pt}{\onelineskip}
+% \setheadfoot{\onelineskip}{2\onelineskip}
+% \setheaderspaces{*}{2\onelineskip}{*}
+% \setsidefeet{\marginparsep}{9em}%
+%    {\onelineskip}{0pt}%
+%    {\normalfont\footnotesize}{\textheight}%
+% \setlength{\footskip}{\onelineskip}
+% \setlength{\footnotesep}{\onelineskip}
+\checkandfixthelayout
+% \fixpdflayout
+
+
 \endinput
 
 %%
