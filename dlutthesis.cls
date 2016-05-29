@@ -8,45 +8,28 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{dlutthesis}[2016/05/27 v0.0.1 Dalian University of Technology Template]
 \def\version{v0.0.1}
-% \newif\ifdlut@bachelor\dlut@bachelorfalse
-% \newif\ifdlut@master\dlut@masterfalse
-% \newif\ifdlut@doctor\dlut@doctorfalse
-% \newif\ifdlut@review\dlut@reviewfalse
-% \newif\ifdlut@submit\dlut@submitfalse
-% \DeclareOption{bachelor}{\dlut@bachelortrue}
-% \DeclareOption{master}{\dlut@mastertrue}
-% \DeclareOption{doctor}{\dlut@doctortrue}
-% \DeclareOption{review}{\dlut@reviewtrue}
-% \DeclareOption{submit}{\dlut@submittrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 \LoadClass[a4paper]{memoir}
-% \ifdlut@bachelor\relax\else
-%   \ifdlut@master\relax\else
-%     \ifdlut@doctor\relax\else
-%       \ClassError{dlutthesis}%
-%       		{You have to specify one of thesis options: bachelor, master or doctor.}{}
-%     \fi
-%   \fi
-% \fi
+
 
 %% dlutthesis.cls segments
 %% 0. Import dlutthesis.cfg
 %% 1. Font options
-%% 2. Document layouts
+%% 2. Page layout
 
 %% 1. Import and configure LaTeX packages.
 %% 2. Define general-purpose LaTeX commands.
 %% 3. Configure the imported packages, also extend LaTeX command in dlutthesis
 %% 4. Draw the dlutthesis
 
-%% ==================================================
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 0. Import dlutthesis.cfg
-%% ==================================================
+%% Created by Dazhi Jiang,
 
-%% ==================================================
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 1. Font options
-%% ==================================================
+%% Created by Dazhi Jiang, 2016-05-29 21:30:05 +0800 (Sun, 29 May 2016)
 %% 1.1 Before 'ctex'
 \RequirePackage{xltxtra}
 
@@ -68,14 +51,14 @@
 %% 1.5 Other font packages
 \RequirePackage{CJKnumb}
 
+%% END: Font options
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-%% ==================================================
-%% 2. Document layouts
-%% ==================================================
-%% set up the page layout%
-%% \settrimmedsize is incompatible with the command,
-%%   \AtBeginDocument{\usepackage{graphicx}}
-%% which is included in the package 'mathtools'.
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 2. Page layout
+%% Created by Dazhi Jiang, 2016-05-29 21:29:51 +0800 (Sun, 29 May 2016)
+
 \settrimmedsize{297mm}{210mm}{*} % a4paper: 297mm * 210mm%
 \setlength{\trimtop}{0pt}
 \setlength{\trimedge}{\stockwidth}
@@ -93,6 +76,54 @@
 % \setlength{\footnotesep}{\onelineskip}
 \checkandfixthelayout
 % \fixpdflayout
+
+%% END: Page Layout
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 3. Page Styles
+%% Created by Dazhi Jiang, 2016-05-29 21:30:14 +0800 (Sun, 29 May 2016)
+%%   * \markboth takes the effect for the twosides documents, while \markright
+%%     is used for the oneside documents.
+
+%% * DLUT thesis page style
+\copypagestyle{dlut}{ruled}
+\makepsmarks{dlut}{%
+  % \let\@mkboth\markboth%
+  \def\chaptermark##1{%
+    \markboth{%
+      \if@mainmatter
+        % \textsc{\S\thechapter:} %
+        \textsc{Chapter\ \thechapter:} %
+      \fi
+      ##1}{##1}}%
+  \def\sectionmark##1{%
+    \markright{%
+      % \if@mainmatter
+        \textsc{大连理工大学博士学位论文} %
+      % \fi
+      }}}
+\makeevenhead{dlut}{\makebox[0pt][c]{\thepage}} {} {\small\leftmark}
+\makeoddhead{dlut} {\small\rightmark}           {} {\thepage}
+\setlength{\headwidth}{\textwidth}
+\makeheadrule{dlut}{\headwidth}{0.4pt}
+\renewcommand*{\tocmark}{\markboth{\contentsname}{\contentsname}}
+\renewcommand*{\bibmark}{\markboth{\bibname}{\bibname}}
+
+\pagestyle{dlut}
+
+%% END: Page Styles
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 4. Spacing
+%% Created by Dazhi Jiang,
+
+
+%% END: Spacing
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 \endinput
