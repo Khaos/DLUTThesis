@@ -96,6 +96,10 @@
 \renewcommand*{\tocmark}{\markboth{\contentsname}{\contentsname}}
 \renewcommand*{\bibmark}{\markboth{\bibname}{\bibname}}
 
+%% * Display the header and footer at the beginning page of a chapter
+\aliaspagestyle{chapter}{dlut}
+
+%% * Load DLUT style
 \pagestyle{dlut}
 
 %% END: Page Styles
