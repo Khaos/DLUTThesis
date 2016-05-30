@@ -18,6 +18,8 @@ recycle
 *.snm
 *.synctex.gz
 *.toc
+*.sublime-workspace
+.Renviron
 
 Doc/Example/*.*
 !Doc/Example/*.tex

@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+		{
+			"path": "../DLUTThesis",
+			"file_exclude_patterns": 
+                [
+                    "._*", 
+                    "*.pdf", 
+                    "*.synctex", 
+                    "*.sublime-workspace"
+                ]
+		}
+	],
+
+    "build_systems":
+    [
+        {
+            "name": "BuildPDF",
+            "cmd": ["make pdfonly"],
+            "shell": true
+        }
+    ]
+}
