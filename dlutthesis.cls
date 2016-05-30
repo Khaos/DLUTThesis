@@ -63,10 +63,10 @@
 \setlength{\trimtop}{0pt}
 \setlength{\trimedge}{\stockwidth}
 \addtolength{\trimedge}{-\paperwidth}
-\settypeblocksize{220.8mm}{161mm}{*}
+\settypeblocksize{216.5mm}{160mm}{*}
 \setulmargins{41.5mm}{*}{*}
 \setlrmargins{27mm}{*}{*}
-\setheadfoot{2\onelineskip}{14.7mm}
+\setheadfoot{2\onelineskip}{15mm}
 \setheaderspaces{*}{11mm}{*}
 % \setlength{\footskip}{14.7mm}
 % \setlength{\footnotesep}{\onelineskip}
@@ -96,10 +96,10 @@
 %   %     % \fi
 %   %     }}%
 % }
-\makeevenhead{dlut}{} {\songti\zihao{5} \@title} {}
-\makeoddhead{dlut} {} {\songti\zihao{5} 大连理工大学博士学位论文} {}
-\makeevenfoot{dlut}{} {\songti\zihao{5} -~\thepage~-} {}
-\makeoddfoot{dlut} {} {\songti\zihao{5} -~\thepage~-} {}
+\makeevenhead{dlut}{} {\songti\small \@title} {}
+\makeoddhead{dlut} {} {\songti\small 大连理工大学博士学位论文} {}
+\makeevenfoot{dlut}{} {\songti\footnotesize -~\thepage~-} {}
+\makeoddfoot{dlut} {} {\songti\footnotesize -~\thepage~-} {}
 \setlength{\headwidth}{\textwidth}
 \makeheadrule{dlut}{\headwidth}{0.75pt}
 \renewcommand*{\tocmark}{\markboth{\contentsname}{\contentsname}}
