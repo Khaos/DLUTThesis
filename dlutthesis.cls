@@ -18,6 +18,7 @@
 %% 1. Font options
 %% 2. Page layout
 %% 3. Page styles
+%% 4. ToC
 
 %% 1. Import and configure LaTeX packages.
 %% 2. Define general-purpose LaTeX commands.
@@ -99,6 +100,18 @@
 \pagestyle{dlut}
 
 %% END: Page Styles
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 4. ToC
+%% Created by Dazhi Jiang, 2016-05-30 21:57:32 +0800 (Mon, 30 May 2016)
+
+%% * Set the default TOC depth
+\maxtocdepth{subsection}    % include subsections in ToC
+
+
+%% END: ToC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
