@@ -18,6 +18,7 @@
 %% 1. Font options
 %% 2. Page layout
 %% 3. Page styles
+%% 4. Titles
 
 %% 1. Import and configure LaTeX packages.
 %% 2. Define general-purpose LaTeX commands.
@@ -107,11 +108,11 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% 4. Spacing
-%% Created by Dazhi Jiang,
+%% 4. Titles
+%% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
 
 
-%% END: Spacing
+%% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
