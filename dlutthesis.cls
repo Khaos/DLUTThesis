@@ -17,6 +17,7 @@
 %% 0. Import dlutthesis.cfg
 %% 1. Font options
 %% 2. Page layout
+%% 3. Page styles
 
 %% 1. Import and configure LaTeX packages.
 %% 2. Define general-purpose LaTeX commands.
