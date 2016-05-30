@@ -36,6 +36,8 @@
 %% 1.2 CTeX
 \RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
 
+\RequirePackage{indentfirst}
+
 %% 1.3 xeCJK options
 \xeCJKsetup{CheckSingle = true, AutoFakeBold = true}
 
@@ -63,13 +65,12 @@
 \setlength{\trimtop}{0pt}
 \setlength{\trimedge}{\stockwidth}
 \addtolength{\trimedge}{-\paperwidth}
-\settypeblocksize{216.5mm}{160mm}{*}
+\settypeblocksize{218mm}{160mm}{*}
 \setulmargins{41.5mm}{*}{*}
 \setlrmargins{27mm}{*}{*}
-\setheadfoot{2\onelineskip}{15mm}
+\setheadfoot{2\onelineskip}{13.5mm}
 \setheaderspaces{*}{11mm}{*}
-% \setlength{\footskip}{14.7mm}
-% \setlength{\footnotesep}{\onelineskip}
+\setlength{\footnotesep}{\onelineskip}
 \checkandfixthelayout
 % \fixpdflayout
 
@@ -118,6 +119,14 @@
 
 %% END: Spacing
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% Tmp
+%% * Floating parameters
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
 
 
 \endinput
