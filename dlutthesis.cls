@@ -86,17 +86,6 @@
 
 %% * DLUT thesis page style
 \copypagestyle{dlut}{ruled}
-% \makepsmarks{dlut}{%
-%   % \let\@mkboth\markboth%
-%   \def\chaptermark##1{%
-%     \markboth{\songti 大连}{\songti 大连理工大学博士学位论文}}%
-%   % \def\sectionmark##1{%
-%   %   \markright{%
-%   %     % \if@mainmatter
-%   %       \textsc{大连理工大学博士学位论文} %
-%   %     % \fi
-%   %     }}%
-% }
 \makeevenhead{dlut}{} {\songti\small \@title} {}
 \makeoddhead{dlut} {} {\songti\small 大连理工大学博士学位论文} {}
 \makeevenfoot{dlut}{} {\songti\footnotesize -~\thepage~-} {}
