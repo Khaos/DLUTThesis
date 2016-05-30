@@ -63,16 +63,12 @@
 \setlength{\trimtop}{0pt}
 \setlength{\trimedge}{\stockwidth}
 \addtolength{\trimedge}{-\paperwidth}
-\settypeblocksize{222mm}{161mm}{*}
-\setulmargins{40mm}{*}{*}
-\setlrmargins{28mm}{*}{*}
-% \setmarginnotes{17pt}{51pt}{\onelineskip}
-% \setheadfoot{\onelineskip}{2\onelineskip}
-% \setheaderspaces{*}{2\onelineskip}{*}
-% \setsidefeet{\marginparsep}{9em}%
-%    {\onelineskip}{0pt}%
-%    {\normalfont\footnotesize}{\textheight}%
-% \setlength{\footskip}{\onelineskip}
+\settypeblocksize{220.8mm}{161mm}{*}
+\setulmargins{41.5mm}{*}{*}
+\setlrmargins{27mm}{*}{*}
+\setheadfoot{2\onelineskip}{14.7mm}
+\setheaderspaces{*}{11mm}{*}
+% \setlength{\footskip}{14.7mm}
 % \setlength{\footnotesep}{\onelineskip}
 \checkandfixthelayout
 % \fixpdflayout
