@@ -100,8 +100,8 @@
         \textsc{大连理工大学博士学位论文} %
       % \fi
       }}}
-\makeevenhead{dlut}{\makebox[0pt][c]{\thepage}} {} {\small\leftmark}
-\makeoddhead{dlut} {\small\rightmark}           {} {\thepage}
+\makeevenhead{dlut}{}                 {} {\small\leftmark}
+\makeoddhead{dlut} {\small\rightmark} {} {}
 \setlength{\headwidth}{\textwidth}
 \makeheadrule{dlut}{\headwidth}{0.4pt}
 \renewcommand*{\tocmark}{\markboth{\contentsname}{\contentsname}}
