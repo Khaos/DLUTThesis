@@ -85,25 +85,23 @@
 
 %% * DLUT thesis page style
 \copypagestyle{dlut}{ruled}
-\makepsmarks{dlut}{%
-  % \let\@mkboth\markboth%
-  \def\chaptermark##1{%
-    \markboth{%
-      \if@mainmatter
-        % \textsc{\S\thechapter:} %
-        \textsc{Chapter\ \thechapter:} %
-      \fi
-      ##1}{##1}}%
-  \def\sectionmark##1{%
-    \markright{%
-      % \if@mainmatter
-        \textsc{大连理工大学博士学位论文} %
-      % \fi
-      }}}
-\makeevenhead{dlut}{}                 {} {\small\leftmark}
-\makeoddhead{dlut} {\small\rightmark} {} {}
+% \makepsmarks{dlut}{%
+%   % \let\@mkboth\markboth%
+%   \def\chaptermark##1{%
+%     \markboth{\songti 大连}{\songti 大连理工大学博士学位论文}}%
+%   % \def\sectionmark##1{%
+%   %   \markright{%
+%   %     % \if@mainmatter
+%   %       \textsc{大连理工大学博士学位论文} %
+%   %     % \fi
+%   %     }}%
+% }
+\makeevenhead{dlut}{} {\songti\zihao{5} \@title} {}
+\makeoddhead{dlut} {} {\songti\zihao{5} 大连理工大学博士学位论文} {}
+\makeevenfoot{dlut}{} {\songti\zihao{5} -~\thepage~-} {}
+\makeoddfoot{dlut} {} {\songti\zihao{5} -~\thepage~-} {}
 \setlength{\headwidth}{\textwidth}
-\makeheadrule{dlut}{\headwidth}{0.4pt}
+\makeheadrule{dlut}{\headwidth}{0.75pt}
 \renewcommand*{\tocmark}{\markboth{\contentsname}{\contentsname}}
 \renewcommand*{\bibmark}{\markboth{\bibname}{\bibname}}
 
