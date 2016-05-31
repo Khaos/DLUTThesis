@@ -185,7 +185,19 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
-%% TODO: 2016-05-31 Define the title page
+%% # TODO: 2016-05-31 Define the title page
+
+%% * IFs for elements in the title page
+\newif\if@dlut@titlepage@submittedtext@isdefined
+\newif\if@dlut@titlepage@title@isdefined
+\newif\if@dlut@titlepage@titleen@isdefined
+\newif\if@dlut@titlepage@author@isdefined
+\newif\if@dlut@titlepage@authorid@isdefined
+\newif\if@dlut@titlepage@supervisor@isdefined
+\newif\if@dlut@titlepage@collegeordept@isdefined
+\newif\if@dlut@titlepage@date@isdefined
+% \newif\if@dlut@titlepage@university@isdefined
+% \newif\if@dlut@titlepage@universityen@isdefined
 
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
