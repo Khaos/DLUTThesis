@@ -49,16 +49,26 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% B. Packages
 %% Created by Dazhi Jiang, 2016-05-31 13:38:18 +0800 (Tue, 31 May 2016)
-%% B.1 Before 'ctex'
+
+%% * PGF key
+\RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
+\RequirePackage{pgfopts}  % Load Package 'pgfopts'
+
+%% * IF*
+\RequirePackage{ifthen}  % Load Package 'ifthen'
+\RequirePackage{ifpdf}  % Load Package 'ifpdf'
+\RequirePackage{ifxetex}  % Load Package 'ifxetex'
+
+%% * Before 'ctex'
 \RequirePackage{xltxtra}
 
-%% B.2 CTeX
+%% * CTeX
 \RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
 
-%% B.3 After 'ctex'
+%% * Paragraph style
 \RequirePackage{indentfirst}
 
-%% B.3 Other font packages
+%% * Other font packages
 \RequirePackage{CJKnumb}
 
 %% END: Packages
