@@ -5,24 +5,74 @@
 %% Created by Dazhi Jiang, 2016-05-27 13:23:39 +0800 (Fri, 27 May 2016)
 %% Copyright (c) 2016 Dazhi Jiang All Rights Reserved.
 
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% * Usage
+%%   - Available keys
+%%
+%%   - Short outline
+%%     - Initialisation
+%%     - Packages
+%%     - Document Settings
+%%       - Fonts
+%%       - Page Layout
+%%       - Page Styles
+%%       - Titles
+%%       - ToC
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% * Change Log
+%%   @ 2016-05-31 05:34:09 +0800 (Tue, 31 May 2016)
+%%     - Define page styles
+%%   @ 2016-05-30 21:29:55 +0800 (Mon, 30 May 2016)
+%%     - Define page layout
+%%   @ 2016-05-27 22:23:17 +0800 (Fri, 27 May 2016)
+%%     - Define fonts
+%%   @ 2016-05-27 13:23:39 +0800 (Fri, 27 May 2016)
+%%     - Create the initial file
+%%
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% A. Initialization
+%% Created by Dazhi Jiang, 2016-05-27 13:23:39 +0800 (Fri, 27 May 2016)
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{dlutthesis}[2016/05/27 v0.0.1 Dalian University of Technology Template]
 \def\version{v0.0.1}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 \LoadClass[a4paper]{memoir}
+%% END: Initialization
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-%% dlutthesis.cls segments
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% B. Packages
+%% Created by Dazhi Jiang, 2016-05-31 13:38:18 +0800 (Tue, 31 May 2016)
+%% B.1 Before 'ctex'
+\RequirePackage{xltxtra}
+
+%% B.2 CTeX
+\RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
+
+%% B.3 After 'ctex'
+\RequirePackage{indentfirst}
+
+%% B.3 Other font packages
+\RequirePackage{CJKnumb}
+
+%% END: Packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% Outlines
 %% 0. Import dlutthesis.cfg
 %% 1. Font options
 %% 2. Page layout
 %% 3. Page styles
+%% 4. Titles
 
-%% 1. Import and configure LaTeX packages.
-%% 2. Define general-purpose LaTeX commands.
-%% 3. Configure the imported packages, also extend LaTeX command in dlutthesis
-%% 4. Draw the dlutthesis
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 0. Import dlutthesis.cfg
@@ -31,28 +81,18 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 1. Font options
 %% Created by Dazhi Jiang, 2016-05-29 21:30:05 +0800 (Sun, 29 May 2016)
-%% 1.1 Before 'ctex'
-\RequirePackage{xltxtra}
 
-%% 1.2 CTeX
-\RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
-
-\RequirePackage{indentfirst}
-
-%% 1.3 xeCJK options
+%% 1.1 xeCJK options
 \xeCJKsetup{CheckSingle = true, AutoFakeBold = true}
 
-%% 1.4 Font settings
-%% 1.4.1 English fonts
+%% 1.2 Font settings
+%% 1.2.1 English fonts
 \setmainfont[Mapping=tex-text]{Times New Roman}
 \setsansfont[Mapping=tex-text]{Arial}
 \setmonofont{Consolas}
-%% 1.4.2 CJK fonts
+%% 1.2.2 CJK fonts
 %%   Declare new font family
 \setCJKfamilyfont{xkai}{STXingkai}
-
-%% 1.5 Other font packages
-\RequirePackage{CJKnumb}
 
 %% END: Font options
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -107,11 +147,11 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% 4. Spacing
-%% Created by Dazhi Jiang,
+%% 4. Titles
+%% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
+%% TODO: 2016-05-31 Define the title page
 
-
-%% END: Spacing
+%% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
