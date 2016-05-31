@@ -88,7 +88,7 @@
 
 %% * The '\@dlut@chapter@style' macro saves the current chapter style, default
 %%   value, 'default'
-\def\@dlut@chapter@style{default}	% Initial chapter style: default
+\def\@dlut@chapter@style{default}    % Initial chapter style: default
 
 %% * The '\dlutset' command sets the dlut keys
 \def\dlutset#1{\pgfkeys{/dlut/.cd,#1}}
@@ -188,16 +188,168 @@
 %% # TODO: 2016-05-31 Define the title page
 
 %% * IFs for elements in the title page
-\newif\if@dlut@titlepage@submittedtext@isdefined
-\newif\if@dlut@titlepage@title@isdefined
-\newif\if@dlut@titlepage@titleen@isdefined
-\newif\if@dlut@titlepage@author@isdefined
-\newif\if@dlut@titlepage@authorid@isdefined
-\newif\if@dlut@titlepage@supervisor@isdefined
-\newif\if@dlut@titlepage@collegeordept@isdefined
-\newif\if@dlut@titlepage@date@isdefined
-% \newif\if@dlut@titlepage@university@isdefined
-% \newif\if@dlut@titlepage@universityen@isdefined
+\newif\if@dlut@titlepage@thesis@exist
+\newif\if@dlut@titlepage@title@exist
+\newif\if@dlut@titlepage@etitle@exist
+\newif\if@dlut@titlepage@author@exist
+\newif\if@dlut@titlepage@authorid@exist
+\newif\if@dlut@titlepage@supervisor@exist
+\newif\if@dlut@titlepage@major@exist
+\newif\if@dlut@titlepage@date@exist
+% \newif\if@dlut@titlepage@university@exist
+
+%% * Define title-page-related keys
+\pgfkeys{%
+    /dlut/.cd,
+    %% - Elements for title page
+    thesis/.code={\thesis{#1}\@dlut@titlepage@thesis@existtrue},
+    title/.code={\title{#1}\@dlut@titlepage@title@existtrue},
+    etitle/.code={\etitle{#1}\@dlut@titlepage@etitle@existtrue},
+    author/.code={\author{#1}\@dlut@titlepage@author@existtrue},
+    authorid/.code={\authorid{#1}\@dlut@titlepage@authorid@existtrue},
+    supervisor/.code={\supervisor{#1}\@dlut@titlepage@supervisor@existtrue},
+    major/.code={\major{#1}\@dlut@titlepage@major@existtrue},
+    date/.code={\date{#1}\@dlut@titlepage@date@existtrue},
+    % university/.code={\university{#1}\@dlut@titlepage@university@existtrue},
+    %% - Title page layout
+    titlepage/thesis/font/.code={\@dlut@titlepage@element@font@define{thesis}{#1}},
+    titlepage/thesis/pre/.code={\@dlut@titlepage@element@pre@define{thesis}{#1}},
+    titlepage/thesis/post/.code={\@dlut@titlepage@element@post@define{thesis}{#1}},
+    titlepage/title/font/.code={\@dlut@titlepage@element@font@define{title}{#1}},
+    titlepage/title/pre/.code={\@dlut@titlepage@element@pre@define{title}{#1}},
+    titlepage/title/post/.code={\@dlut@titlepage@element@post@define{title}{#1}},
+    titlepage/etitle/font/.code={\@dlut@titlepage@element@font@define{etitle}{#1}},
+    titlepage/etitle/pre/.code={\@dlut@titlepage@element@pre@define{etitle}{#1}},
+    titlepage/etitle/post/.code={\@dlut@titlepage@element@post@define{etitle}{#1}},
+    titlepage/author/font/.code={\@dlut@titlepage@element@font@define{author}{#1}},
+    titlepage/author/pre/.code={\@dlut@titlepage@element@pre@define{author}{#1}},
+    titlepage/author/post/.code={\@dlut@titlepage@element@post@define{author}{#1}},
+    titlepage/authorid/font/.code={\@dlut@titlepage@element@font@define{authorid}{#1}},
+    titlepage/authorid/pre/.code={\@dlut@titlepage@element@pre@define{authorid}{#1}},
+    titlepage/authorid/post/.code={\@dlut@titlepage@element@post@define{authorid}{#1}},
+    titlepage/supervisor/font/.code={\@dlut@titlepage@element@font@define{supervisor}{#1}},
+    titlepage/supervisor/pre/.code={\@dlut@titlepage@element@pre@define{supervisor}{#1}},
+    titlepage/supervisor/post/.code={\@dlut@titlepage@element@post@define{supervisor}{#1}},
+    titlepage/major/font/.code={\@dlut@titlepage@element@font@define{major}{#1}},
+    titlepage/major/pre/.code={\@dlut@titlepage@element@pre@define{major}{#1}},
+    titlepage/major/post/.code={\@dlut@titlepage@element@post@define{major}{#1}},
+    titlepage/date/font/.code={\@dlut@titlepage@element@font@define{date}{#1}},
+    titlepage/date/pre/.code={\@dlut@titlepage@element@pre@define{date}{#1}},
+    titlepage/date/post/.code={\@dlut@titlepage@element@post@define{date}{#1}},
+    % titlepage/university/font/.code={\@dlut@titlepage@element@font@define{university}{#1}},
+    % titlepage/university/pre/.code={\@dlut@titlepage@element@pre@define{university}{#1}},
+    % titlepage/university/post/.code={\@dlut@titlepage@element@post@define{university}{#1}},
+    %% - Title page style
+    titlepagestyle/.is choice,
+    titlepagestyle/default/.code={\@dlut@titlepage@style@clear},
+    titlepagestyle/.default=default,
+}
+
+%% * Define the elements of the title page
+%%   - Prototype used to define the element command
+\DeclareRobustCommand{\@dlut@titlepage@element@define}[1]{%
+	\@namedef{#1}##1{%
+		\expandafter\expandafter\expandafter\gdef\@nameuse{@dlut@titlepage@#1}{##1}}
+}
+%%   - Prototype used to define the element font
+\DeclareRobustCommand{\@dlut@titlepage@element@font@define}[2]{%
+	\@namedef{@dlut@titlepage@#1@font}{\normalfont #2}%
+}
+%%   - Prototype used to define the text before the main element
+\DeclareRobustCommand{\@dlut@titlepage@element@pre@define}[2]{%
+	\@namedef{@dlut@titlepage@#1@pre}{#2}%
+}
+%%   - Prototype used to define the text after the main element
+\DeclareRobustCommand{\@dlut@titlepage@element@post@define}[2]{%
+	\@namedef{@dlut@titlepage@#1@post}{#2}%
+}
+%%   - Prototype used to define the layout of the elements
+\DeclareRobustCommand{\@dlut@titlepage@element@group@define}[1]{%
+	\@namedef{@dlut@titlepage@group@#1}{%
+		\@nameuse{@dlut@titlepage@#1@pre}
+		{\@nameuse{@dlut@titlepage@#1@font} \@nameuse{@dlut@titlepage@#1}}
+		\@nameuse{@dlut@titlepage@#1@post}
+	}
+}
+%%     !!! Comment
+%%     The definition of \@nameuse is
+%%         \def\@nameuse#1{\csname #1\endcsname}
+%%     The 1st \expandafter saves the 2nd one, while the 3rd one saves \gdef.
+%%     Thus, the 2nd \expandafter and \gdef are saved, while \@nameuse is
+%%     expanded to its definition. Then the command becomes
+%%         \expandafter\gdef\csname @#1\endcsname
+%%     This will allow the final expanded result is \@#1 with #1 replacing by
+%%     the corresponding text.
+
+%%   - Main title
+\let\title@orig\title
+\renewcommand{\title}[1]{%
+	\title@orig{#1}%
+	\let\@dlut@titlepage@title\@title%
+}
+\@dlut@titlepage@element@group@define{title}
+
+%%   - Author
+\let\author@orig\author
+\renewcommand{\author}[1]{%
+	\author@orig{#1}%
+	\let\@dlut@titlepage@author\@author%
+}
+\@dlut@titlepage@element@group@define{author}
+
+%%   - Date
+\let\date@orig\date
+\renewcommand{\date}[1]{%
+	\date@orig{#1}%
+	\let\@dlut@titlepage@date\@date%
+}
+\@dlut@titlepage@element@group@define{date}
+
+%%   - Thesis type
+\@dlut@titlepage@element@define{thesis}
+%%     as \def\thesis#1{\gdef\@thesis{#1}}
+%%   - Layout
+\@dlut@titlepage@element@group@define{thesis}
+
+%%   - etitle, english title
+\@dlut@titlepage@element@define{etitle}
+%%     as \def\etitle#1{\gdef\@etitle{#1}}
+%%   - Layout
+\@dlut@titlepage@element@group@define{etitle}
+
+%%   - authorid, author ID
+\@dlut@titlepage@element@define{authorid}
+%%     as \def\authorid#1{\gdef\@authorid{#1}}
+%%   - Layout
+\@dlut@titlepage@element@group@define{authorid}
+
+%%   - Supervisor, the name of your supervisor
+\@dlut@titlepage@element@define{supervisor}
+%%     as \def\supervisor#1{\gdef\@supervisor{#1}}
+%%   - Layout
+\@dlut@titlepage@element@group@define{supervisor}
+
+%%   - Major
+\@dlut@titlepage@element@define{major}
+%%     as \def\major#1{\gdef\@major{#1}}
+%%   - Layout
+\@dlut@titlepage@element@group@define{major}
+
+
+%%   - University, the name of your University
+% \@dlut@titlepage@element@define{university}
+% %      as \def\university#1{\gdef\@university{#1}}
+% %%   - Layout
+% \@dlut@titlepage@element@group@define{university}
+
+
+
+
+%%   - Place
+\@dlut@titlepage@element@define{place}
+% \newcommand{\thesis}{{A thesis submitted for the major of}}
+\@dlut@titlepage@element@group@define{place}
+
 
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
