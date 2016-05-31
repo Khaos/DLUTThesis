@@ -9,9 +9,10 @@
 %% * Usage
 %%   - Available keys
 %%
-%%   - Short outline
+%%   - Short outlines
 %%     - Initialisation
 %%     - Packages
+%%     - The 'dlut' keys
 %%     - Document Settings
 %%       - Fonts
 %%       - Page Layout
@@ -72,6 +73,31 @@
 \RequirePackage{CJKnumb}
 
 %% END: Packages
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% C. The 'dlut' keys
+%% Created by Dazhi Jiang, 2016-05-31 14:40:32 +0800 (Tue, 31 May 2016)
+
+%% !!! A few comment
+%% The 'chapterstyle' key saves the name of the current chapter style and can
+%% be later used by another key, e.g., 'headstyle'. This ensures that the
+%% default/original value of chapter style can be restored in case of unexpected
+%% changes in other commands, such as commands for setting up the head styles
+
+%% * The '\@dlut@chapter@style' macro saves the current chapter style, default
+%%   value, 'default'
+\def\@dlut@chapter@style{default}	% Initial chapter style: default
+
+%% * The '\dlutset' command sets the dlut keys
+\def\dlutset#1{\pgfkeys{/dlut/.cd,#1}}
+
+%% * The '\dlut@opt@set' command is only called at preamble to set the class
+%%   options
+\def\dlut@opt@set#1{\pgfkeys{/dlutopt/.cd,#1}}
+
+%% END: The 'dlut' keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
