@@ -18,11 +18,14 @@
 %%       - Page Layout
 %%       - Page Styles
 %%       - Titles
+%%         - Main title page
 %%       - ToC
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Change Log
+%%   @ 2016-06-01 20:45:10 +0800 (Wed, 01 Jun 2016)
+%%     - Create the title page
 %%   @ 2016-05-31 05:34:09 +0800 (Tue, 31 May 2016)
 %%     - Define page styles
 %%   @ 2016-05-30 21:29:55 +0800 (Mon, 30 May 2016)
@@ -107,7 +110,7 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% D. Commands
-%% Created by Dazhi Jiang, 2016-05-31 14:40:32 +0800 (Tue, 31 May 2016)
+%% Created by Dazhi Jiang, 2016-06-01 20:43:54 +0800 (Wed, 01 Jun 2016)
 \newcommand\fwdistleft[2][1cm]{{\hb@xt@ #1{#2\hss}}}
 \newcommand\fwdistcenter[2][1cm]{{\hb@xt@ #1{\hss#2\hss}}}
 \newcommand\fwdistright[2][1cm]{{\hb@xt@ #1{\hss#2}}}
@@ -204,8 +207,8 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
-%% # TODO: 2016-05-31 Define the title page
 
+%% # DONE:0 x 2016-06-01 2016-05-31 Define the title page
 %% * IFs for elements in the title page
 \newif\if@dlut@titlepage@thesis@exist
 \newif\if@dlut@titlepage@title@exist
@@ -460,6 +463,8 @@
 		}
 	\fi
 }
+
+%% # TODO:0 2016-06-01 Plagiarism declaration
 
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
