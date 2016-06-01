@@ -129,6 +129,7 @@
 %% 1.2.2 CJK fonts
 %%   Declare new font family
 \setCJKfamilyfont{xkai}{STXingkai}
+\newcommand{\xkai}{\CJKfamily{xkai}}
 
 %% END: Font options
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -198,6 +199,16 @@
 \newif\if@dlut@titlepage@date@exist
 % \newif\if@dlut@titlepage@university@exist
 
+%% * Declare the style switchers for title page
+\newif\if@dlut@titlepage@style@dlut
+
+%% * Clear title page style
+\let\@dlut@maketitle@orig\maketitle
+\newcommand*{\@dlut@titlepage@style@clear}{%
+	\@dlut@titlepage@style@dlutfalse
+	\def\maketitle{\@dlut@maketitle@orig}
+}
+
 %% * Define title-page-related keys
 \pgfkeys{%
     /dlut/.cd,
@@ -242,7 +253,10 @@
     %% - Title page style
     titlepagestyle/.is choice,
     titlepagestyle/default/.code={\@dlut@titlepage@style@clear},
-    titlepagestyle/.default=default,
+    titlepagestyle/dlut/.code={\@dlut@titlepage@style@clear %
+							   \@dlut@titlepage@style@dluttrue %
+							   \@dlut@titlepage@style@set},
+    titlepagestyle/.default=dlut,
 }
 
 %% * Define the elements of the title page
@@ -342,14 +356,92 @@
 % %%   - Layout
 % \@dlut@titlepage@element@group@define{university}
 
+%% * Set up the title page style
+%%   - Single column
+\newenvironment{alwayssingle}{%
+	\@restonecolfalse
+	\if@twocolumn \@restonecoltrue\onecolumn
+	\else \newpage
+	\fi}
+{\if@restonecol\twocolumn\else\newpage\fi}
 
-
-
-%%   - Place
-\@dlut@titlepage@element@define{place}
-% \newcommand{\thesis}{{A thesis submitted for the major of}}
-\@dlut@titlepage@element@group@define{place}
-
+\newcommand{\@dlut@titlepage@style@set}{%
+	%% - DLUT style II: better for 10pt
+	\if@dlut@titlepage@style@dlut
+		\dlutset{%
+            titlepage/thesis/font={\huge\songti\bfseries}, %% 小一、宋体、粗体
+            titlepage/thesis/pre={\vspace{-3.2mm}}, %% * version at the top
+            titlepage/thesis/post={\\},
+			titlepage/title/font={\LARGE\heiti\sffamily}, %% 小二、黑体、无衬线
+			titlepage/title/pre={\vspace{18mm}},
+			titlepage/title/post={\\},
+			titlepage/etitle/font={\zihao{3}\bfseries}, %% 三号、粗体
+			titlepage/etitle/pre={\vspace{5mm}},
+			titlepage/etitle/post={\\},
+			titlepage/author/font={\large},
+			titlepage/author/pre={},
+			titlepage/author/post={},
+			titlepage/authorid/font={\large},
+			titlepage/authorid/pre={},
+			titlepage/authorid/post={},
+            titlepage/supervisor/font={\large},
+            titlepage/supervisor/pre={},
+            titlepage/supervisor/post={},
+            titlepage/major/font={\large},
+            titlepage/major/pre={},
+            titlepage/major/post={},
+			titlepage/date/font={\large},
+			titlepage/date/pre={},
+			titlepage/date/post={},
+			% titlepage/university/font={\normalfont},
+			% titlepage/university/pre={},
+			% titlepage/university/post={\unskip,~\ignorespaces},
+		}
+		\renewcommand{\maketitle}{%
+			\begin{alwayssingle}
+				\thispagestyle{empty}
+				\begin{center}
+                    \mbox{}\\
+                    %% - Thesis
+                    \@dlut@titlepage@group@thesis
+                    %% - Main title
+    				\@dlut@titlepage@group@title
+                    %% - English title
+    				\@dlut@titlepage@group@etitle
+                    \vspace{65mm}
+                    {\large\songti
+                    \begin{tabular}{p{0.6cm}p{6.4em}@{\extracolsep{0.5em}}lc}
+                        ~ & 作 \hfill 者 \hfill 姓 \hfill 名：& \@dlut@titlepage@group@author & \\[2mm]
+                        ~ & 学 \hfill 号：& \@dlut@titlepage@group@authorid & \\
+                        ~ & 指 \hfill 导 \hfill 教 \hfill 师：& \@dlut@titlepage@group@supervisor & \\
+                        ~ & 学 \hfill 科 \hfill 、\hfill 专 \hfill 业：& \@dlut@titlepage@group@major & \\
+                        ~ & 答 \hfill 辩 \hfill 日 \hfill 期：& \@dlut@titlepage@group@date & \\
+                    \end{tabular}
+                    }
+                    % \begin{tabular}{p{0.6cm}p{6.4em}@{\extracolsep{0.5em}}lc}
+                    %     \vspace{-0.41cm}
+                    %     ~ & 作 \hfill 者 \hfill 姓 \hfill 名：& \fixedunderlineleft[6.08cm]{\@cauthor} & \\
+                    %     \vspace{-0.41cm}
+                    %     ~ & 学 \hfill 号：& \fixedunderlineleft[6.08cm]{\@cauthorno} & \\
+                    %     \vspace{-0.41cm}
+                    %     ~ & 指 \hfill 导 \hfill 教 \hfill 师：& \fixedunderlineleft[6.08cm]{\@csupervisor} & \\
+                    %     \vspace{-0.41cm}
+                    %     ~ & 学 \hfill 科 \hfill 、\hfill 专 \hfill 业：& \fixedunderlineleft[6.08cm]{\@csubject} & \\
+                    %     \vspace{-0.41cm}
+                    %     ~ & 答 \hfill 辩 \hfill 日 \hfill 期：& \fixedunderlineleft[6.08cm]{\@cdate} & \\
+                    %     \vspace{-0.41cm}
+                    % \end{tabular}
+					%% - University
+					% \@dlut@titlepage@group@university
+                    \\ \vspace{23.4mm}
+                    {\Large\xkai 大连理工大学\\}
+                    \vspace{2.4mm}
+                    {\normalsize\songti Dalian University of Technology}
+				\end{center}
+			\end{alwayssingle}
+		}
+	\fi
+}
 
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -361,7 +453,6 @@
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
-
 
 \endinput
 

@@ -22,9 +22,43 @@
 
 \title{大工模板}
 
+\dlutset{%
+	%% - Title page
+	titlepagestyle=dlut,
+}
+
+%% * Define the elements of title page
+\dlutset{%
+	thesis={博~~士~~学~~位~~论~~文},
+    title={大连理工大学~~~~~~~~~~~博士学位论文模版},
+    etitle={The Template ~~~~~~~~~ of DLUT Thesis},
+    author={Khaos},
+    authorid={3.14159265},
+	major={文学},
+    supervisor={教授},
+	date={\today},
+	% university={University of Sheffield},
+}
+
+% \cdegree{博~~士~~学~~位~~论~~文}
+% \ctitle{大连理工大学博士学位论文~\XeLaTeX{}~模版}
+% \etitle{The \XeLaTeX{} Template of Doctor Degree Thesis  of DUT}
+%
+% % 根据需要添加字符间距
+% \csubject{{\quad\;}计~算~数~学~专~业}
+% \cauthor{{\quad\;}张~~　~~三}
+% \cauthorno{{\quad\;}20801000}
+% \csupervisor{{\quad\;}王~~老~~五　副教授}
+%
+% % 这里默认使用最后编译的时间，也可自行给定日期，注意汉字和数字之间的空格。
+% \cdate{{\quad\;}\the\year~年~\the\month~月~\the\day~日}
+
+
 \begin{document}
 \maxtocdepth{subsection} % put 3 levels into the ToC
 \frontmatter
+\maketitle
+\cleardoublepage
 % \thetitlepage
 % \approvalpage
 % \asuabstract
