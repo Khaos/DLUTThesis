@@ -229,11 +229,11 @@
     thesis/.code={\thesis{#1}\@dlut@titlepage@thesis@existtrue},
     title/.code={\title{#1}\@dlut@titlepage@title@existtrue},
     etitle/.code={\etitle{#1}\@dlut@titlepage@etitle@existtrue},
-    author/.code={\author{#1}\@dlut@titlepage@author@existtrue},
-    authorid/.code={\authorid{#1}\@dlut@titlepage@authorid@existtrue},
-    supervisor/.code={\supervisor{#1}\@dlut@titlepage@supervisor@existtrue},
-    major/.code={\major{#1}\@dlut@titlepage@major@existtrue},
-    date/.code={\date{#1}\@dlut@titlepage@date@existtrue},
+    author/.code={\author{\fwulleft[60.8mm]{{\quad}#1}}\@dlut@titlepage@author@existtrue},
+    authorid/.code={\authorid{\fwulleft[60.8mm]{{\quad}#1}}\@dlut@titlepage@authorid@existtrue},
+    supervisor/.code={\supervisor{\fwulleft[60.8mm]{{\quad}#1}}\@dlut@titlepage@supervisor@existtrue},
+    major/.code={\major{\fwulleft[60.8mm]{{\quad}#1}}\@dlut@titlepage@major@existtrue},
+    date/.code={\date{\fwulleft[60.8mm]{{\quad}#1}}\@dlut@titlepage@date@existtrue},
     % university/.code={\university{#1}\@dlut@titlepage@university@existtrue},
     %% - Title page layout
     titlepage/thesis/font/.code={\@dlut@titlepage@element@font@define{thesis}{#1}},
@@ -319,7 +319,7 @@
 %%   - Author
 \let\author@orig\author
 \renewcommand{\author}[1]{%
-	\author@orig{\fwulleft[60.8mm]{#1}}%
+	\author@orig{#1}%
 	\let\@dlut@titlepage@author\@author%
 }
 \@dlut@titlepage@element@group@define{author}
