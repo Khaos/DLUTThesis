@@ -373,10 +373,10 @@
             titlepage/thesis/pre={\vspace{-3.2mm}}, %% * version at the top
             titlepage/thesis/post={\\},
 			titlepage/title/font={\LARGE\heiti\sffamily}, %% 小二、黑体、无衬线
-			titlepage/title/pre={\vspace{18mm}},
+			titlepage/title/pre={\vspace{19.6mm}},
 			titlepage/title/post={\\},
 			titlepage/etitle/font={\zihao{3}\bfseries}, %% 三号、粗体
-			titlepage/etitle/pre={\vspace{5mm}},
+			titlepage/etitle/pre={\vspace{6mm}},
 			titlepage/etitle/post={\\},
 			titlepage/author/font={\large},
 			titlepage/author/pre={},
@@ -408,13 +408,13 @@
     				\@dlut@titlepage@group@title
                     %% - English title
     				\@dlut@titlepage@group@etitle
-                    \vspace{65mm}
+                    \vspace{62.2mm}
                     {\large\songti
-                    \begin{tabular}{p{0.6cm}p{6.4em}@{\extracolsep{0.5em}}lc}
+                    \begin{tabular}{p{0.6cm}p{6em}@{\extracolsep{0.5em}}lc}
                         ~ & 作 \hfill 者 \hfill 姓 \hfill 名：& \@dlut@titlepage@group@author & \\[2mm]
-                        ~ & 学 \hfill 号：& \@dlut@titlepage@group@authorid & \\
-                        ~ & 指 \hfill 导 \hfill 教 \hfill 师：& \@dlut@titlepage@group@supervisor & \\
-                        ~ & 学 \hfill 科 \hfill 、\hfill 专 \hfill 业：& \@dlut@titlepage@group@major & \\
+                        ~ & 学 \hfill 号：& \@dlut@titlepage@group@authorid & \\[2mm]
+                        ~ & 指 \hfill 导 \hfill 教 \hfill 师：& \@dlut@titlepage@group@supervisor & \\[2mm]
+                        ~ & 学 \hfill 科 \hfill 、\hfill 专 \hfill 业：& \@dlut@titlepage@group@major & \\[2mm]
                         ~ & 答 \hfill 辩 \hfill 日 \hfill 期：& \@dlut@titlepage@group@date & \\
                     \end{tabular}
                     }
@@ -433,9 +433,9 @@
                     % \end{tabular}
 					%% - University
 					% \@dlut@titlepage@group@university
-                    \\ \vspace{23.4mm}
+                    \\ \vspace{21.4mm}
                     {\Large\xkai 大连理工大学\\}
-                    \vspace{2.4mm}
+                    \vspace{2.3mm}
                     {\normalsize\songti Dalian University of Technology}
 				\end{center}
 			\end{alwayssingle}
