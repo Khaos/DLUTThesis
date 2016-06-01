@@ -100,6 +100,19 @@
 %% END: The 'dlut' keys
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% D. Commands
+%% Created by Dazhi Jiang, 2016-05-31 14:40:32 +0800 (Tue, 31 May 2016)
+\newcommand\fwdistleft[2][1cm]{{\hb@xt@ #1{#2\hss}}}
+\newcommand\fwdistcenter[2][1cm]{{\hb@xt@ #1{\hss#2\hss}}}
+\newcommand\fwdistright[2][1cm]{{\hb@xt@ #1{\hss#2}}}
+\newcommand\fwulleft[2][1cm]{\underline{\hb@xt@ #1{#2\hss}}}
+\newcommand\fwulcenter[2][1cm]{\underline{\hb@xt@ #1{\hss#2\hss}}}
+\newcommand\fwulright[2][1cm]{\underline{\hb@xt@ #1{\hss#2}}}
+
+%% END: Commands
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% Outlines
@@ -306,7 +319,7 @@
 %%   - Author
 \let\author@orig\author
 \renewcommand{\author}[1]{%
-	\author@orig{#1}%
+	\author@orig{\fwulleft[60.8mm]{#1}}%
 	\let\@dlut@titlepage@author\@author%
 }
 \@dlut@titlepage@element@group@define{author}
