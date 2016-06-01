@@ -4,6 +4,7 @@
 
 ## Features
 
+- Define the title page
 - Define the default page styles
 - Define the basic page layout
 - Add `CJK` support
