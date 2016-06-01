@@ -52,13 +52,13 @@
 %% Created by Dazhi Jiang, 2016-05-31 13:38:18 +0800 (Tue, 31 May 2016)
 
 %% * PGF key
-\RequirePackage{pgfkeys}  % Load Package 'pgfkeys'
-\RequirePackage{pgfopts}  % Load Package 'pgfopts'
+\RequirePackage{pgfkeys}  %% Load Package 'pgfkeys'
+\RequirePackage{pgfopts}  %% Load Package 'pgfopts'
 
 %% * IF*
-\RequirePackage{ifthen}  % Load Package 'ifthen'
-\RequirePackage{ifpdf}  % Load Package 'ifpdf'
-\RequirePackage{ifxetex}  % Load Package 'ifxetex'
+\RequirePackage{ifthen}  %% Load Package 'ifthen'
+\RequirePackage{ifpdf}  %% Load Package 'ifpdf'
+\RequirePackage{ifxetex}  %% Load Package 'ifxetex'
 
 %% * Before 'ctex'
 \RequirePackage{xltxtra}
@@ -71,6 +71,11 @@
 
 %% * Other font packages
 \RequirePackage{CJKnumb}
+
+%% * MISC
+\RequirePackage{ulem}  %% Underlining command: \uline
+\renewcommand{\ULthickness}{.75pt} %% Default: .4pt
+
 
 %% END: Packages
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -106,9 +111,9 @@
 \newcommand\fwdistleft[2][1cm]{{\hb@xt@ #1{#2\hss}}}
 \newcommand\fwdistcenter[2][1cm]{{\hb@xt@ #1{\hss#2\hss}}}
 \newcommand\fwdistright[2][1cm]{{\hb@xt@ #1{\hss#2}}}
-\newcommand\fwulleft[2][1cm]{\underline{\hb@xt@ #1{#2\hss}}}
-\newcommand\fwulcenter[2][1cm]{\underline{\hb@xt@ #1{\hss#2\hss}}}
-\newcommand\fwulright[2][1cm]{\underline{\hb@xt@ #1{\hss#2}}}
+\newcommand\fwulleft[2][1cm]{\uline{\hb@xt@ #1{#2\hss}}}
+\newcommand\fwulcenter[2][1cm]{\uline{\hb@xt@ #1{\hss#2\hss}}}
+\newcommand\fwulright[2][1cm]{\uline{\hb@xt@ #1{\hss#2}}}
 
 %% END: Commands
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
