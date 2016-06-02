@@ -465,7 +465,7 @@
 	\fi
 }
 
-%% # TODO:0 2016-06-01 Plagiarism declaration
+%% # DONE:10 x 2016-06-02 2016-06-01 Plagiarism declaration
 \newcommand{\makedeclaration}{%
     \begin{alwayssingle}
         \thispagestyle{empty}
