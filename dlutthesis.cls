@@ -78,6 +78,7 @@
 %% * MISC
 \RequirePackage{ulem}  %% Underlining command: \uline
 \renewcommand{\ULthickness}{.75pt} %% Default: .4pt
+\RequirePackage{pdfpages} %% For loading the plagiarism declaration
 
 
 %% END: Packages
@@ -465,6 +466,12 @@
 }
 
 %% # TODO:0 2016-06-01 Plagiarism declaration
+\newcommand{\makedeclaration}{%
+    \begin{alwayssingle}
+        \thispagestyle{empty}
+        \includepdf[pages=-,fitpaper]{Figs/pdf/Declaration}
+    \end{alwayssingle}
+}
 
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
