@@ -19,11 +19,14 @@
 %%       - Page Styles
 %%       - Titles
 %%         - Main title page
+%%         - Plagiarism declaration
 %%       - ToC
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Change Log
+%%   @ 2016-06-02 14:26:34 +0800 (Thu, 02 Jun 2016)
+%%     - Merge the plagiarism declaration page
 %%   @ 2016-06-01 20:45:10 +0800 (Wed, 01 Jun 2016)
 %%     - Create the title page
 %%   @ 2016-05-31 05:34:09 +0800 (Tue, 31 May 2016)
