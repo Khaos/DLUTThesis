@@ -487,11 +487,20 @@
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% 5. Headings
-%% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
+%% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
-%% # TODO:0 2016-06-02 Define the chapter headings
-%% # TODO:10 2016-06-02 Define the section headings
-%% # TODO:20 2016-06-02 Define the subsection headings
+%% # DOING:0 2016-06-02 Define the chapter headings
+%% * Declare booleans for the extra chapter styles
+\newif\if@dlut@chapterstyle@dlut
+
+%% * Clear chapter style
+\newcommand*{\@dlut@chapterstyle@clear}{%
+	\@dlut@chapterstyle@dlutfalse%
+}
+
+
+%% # TODO:0 2016-06-02 Define the section headings
+%% # TODO:10 2016-06-02 Define the subsection headings
 
 
 
