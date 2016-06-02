@@ -20,6 +20,10 @@
 %%       - Titles
 %%         - Main title page
 %%         - Plagiarism declaration
+%%       - Headings
+%%         - Chapter headings
+%%         - Section headings
+%%         - Subsection headings
 %%       - ToC
 
 
@@ -133,6 +137,7 @@
 %% 2. Page layout
 %% 3. Page styles
 %% 4. Titles
+%% 5. Headings
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -479,6 +484,28 @@
 %% END: Titles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 5. Headings
+%% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
+
+%% # DOING:0 2016-06-02 Define the chapter headings
+%% * Declare booleans for the extra chapter styles
+\newif\if@dlut@chapterstyle@dlut
+
+%% * Clear chapter style
+\newcommand*{\@dlut@chapterstyle@clear}{%
+	\@dlut@chapterstyle@dlutfalse%
+}
+
+
+%% # TODO:0 2016-06-02 Define the section headings
+%% # TODO:10 2016-06-02 Define the subsection headings
+
+
+
+%% END: Headings
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 %% Tmp
