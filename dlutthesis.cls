@@ -70,7 +70,7 @@
 \RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
 
 %% * Paragraph style
-\RequirePackage{indentfirst}
+% \RequirePackage{indentfirst}
 
 %% * Other font packages
 \RequirePackage{CJKnumb}
@@ -477,7 +477,12 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
 %% Tmp
+
+%%
+\indentafterchapter
+
 %% * Floating parameters
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
