@@ -20,6 +20,10 @@
 %%       - Titles
 %%         - Main title page
 %%         - Plagiarism declaration
+%%       - Headings
+%%         - Chapter headings
+%%         - Section headings
+%%         - Subsection headings
 %%       - ToC
 
 
@@ -133,6 +137,7 @@
 %% 2. Page layout
 %% 3. Page styles
 %% 4. Titles
+%% 5. Headings
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -477,6 +482,20 @@
 }
 
 %% END: Titles
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%% 5. Headings
+%% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
+
+%% # TODO:0 2016-06-02 Define the chapter headings
+%% # TODO:10 2016-06-02 Define the section headings
+%% # TODO:20 2016-06-02 Define the subsection headings
+
+
+
+%% END: Headings
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
