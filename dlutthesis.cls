@@ -480,23 +480,15 @@
 %% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
 %% # DOING:0 2016-06-02 Define the chapter headings
-%% * Declare booleans for the extra chapter styles
-\newif\if@dlut@chapterheading@dlut
 
-%% * Clear chapter style
-\newcommand*{\@dlut@chapterheading@clear}{%
-	\@dlut@chapterheading@dlutfalse%
-}
-
+%% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
+%%   default value, 'default'.
+\def\@dlut@chapter@heading{default}    % Initial chapter heading style: default
 %% !!! A few comment
 %% The 'chapterheading' key saves the name of the current chapter style and can
 %% be later used by another key, e.g., 'headstyle'. This ensures that the
 %% default/original value of chapter style can be restored in case of unexpected
 %% changes in other commands, such as commands for setting up the head styles
-
-%% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
-%%   default value, 'default'.
-\def\@dlut@chapter@heading{default}    % Initial chapter heading style: default
 
 %% * Define the chapter heading keys
 \pgfkeys{%
@@ -511,7 +503,7 @@
 
 %% * Define the chapter heading style
 %%   - The 'dlut' style
-\makechapterstyle{dlut}{
+\makechapterstyle{dlut}{%
 	%% - Initialisation, default
 	\chapterstyle{default}
 	%% - Set up dimensions
@@ -533,6 +525,19 @@
 	\renewcommand*{\chaptitlefont}{\chapnumfont}
 }
 
+\makechapterstyle{dlutappendix}{%
+	%% - Initialisation, dlut
+	\chapterstyle{dlut}
+	%% -
+	\renewcommand*{\chapnamefont}{\chapnumfont}
+	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
+	\renewcommand*{\chapternamenum}{\space}
+	%% # FIXME: 2016-06-03 The chapter number of appendix is not displayed
+	\renewcommand*{\printchapternonum}{%
+		\centering \chapnamefont \@chapapp \thechapter\quad}
+}
+
+\addtodef{\appendix}{}{\chapterstyle{dlutappendix}}
 
 %% # TODO:0 2016-06-02 Define the section headings
 %% # TODO:10 2016-06-02 Define the subsection headings
@@ -543,7 +548,7 @@
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 %% # TODO: 2016-06-03 Redefine the chapter name of appendix
-% \renewcommand*{\appendixname}{附录}
+\renewcommand*{\appendixname}{附录}
 
 %% Tmp
 
