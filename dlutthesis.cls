@@ -229,6 +229,8 @@
 	\def\maketitle{\@dlut@maketitle@orig}
 }
 
+%% # TODO: 2016-06-03 Simplify the keys
+
 %% * Define title-page-related keys
 \pgfkeys{%
     /dlut/.cd,
