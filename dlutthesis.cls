@@ -96,16 +96,6 @@
 %% C. The 'dlut' keys
 %% Created by Dazhi Jiang, 2016-05-31 14:40:32 +0800 (Tue, 31 May 2016)
 
-%% !!! A few comment
-%% The 'chapterstyle' key saves the name of the current chapter style and can
-%% be later used by another key, e.g., 'headstyle'. This ensures that the
-%% default/original value of chapter style can be restored in case of unexpected
-%% changes in other commands, such as commands for setting up the head styles
-
-%% * The '\@dlut@chapter@style' macro saves the current chapter style, default
-%%   value, 'default'
-\def\@dlut@chapter@style{default}    % Initial chapter style: default
-
 %% * The '\dlutset' command sets the dlut keys
 \def\dlutset#1{\pgfkeys{/dlut/.cd,#1}}
 
@@ -491,11 +481,56 @@
 
 %% # DOING:0 2016-06-02 Define the chapter headings
 %% * Declare booleans for the extra chapter styles
-\newif\if@dlut@chapterstyle@dlut
+\newif\if@dlut@chapterheading@dlut
 
 %% * Clear chapter style
-\newcommand*{\@dlut@chapterstyle@clear}{%
-	\@dlut@chapterstyle@dlutfalse%
+\newcommand*{\@dlut@chapterheading@clear}{%
+	\@dlut@chapterheading@dlutfalse%
+}
+
+%% !!! A few comment
+%% The 'chapterheading' key saves the name of the current chapter style and can
+%% be later used by another key, e.g., 'headstyle'. This ensures that the
+%% default/original value of chapter style can be restored in case of unexpected
+%% changes in other commands, such as commands for setting up the head styles
+
+%% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
+%%   default value, 'default'.
+\def\@dlut@chapter@heading{default}    % Initial chapter heading style: default
+
+%% * Define the chapter heading keys
+\pgfkeys{%
+	/dlut/.cd,
+	%% - Chapter heading style
+	chapterheading/.is choice,
+	chapterheading/dlut/.code={\chapterstyle{dlut}},
+	chapterheading/default/.code={\chapterstyle{default}},
+	chapterheading/.default=default,
+	chapterheading/.append code={\def\@dlut@chapter@heading{#1}},
+}
+
+%% * Define the chapter heading style
+%%   - The 'dlut' style
+\makechapterstyle{dlut}{
+	%% - Initialisation, default
+	\chapterstyle{default}
+	%% - Set up dimensions
+	\setlength\beforechapskip{-\baselineskip}
+	\setlength\afterchapskip{\baselineskip}
+	%% - No chapter name
+	\renewcommand*{\printchaptername}{}
+	%% - No space between chapter name and chapter number
+	\renewcommand*{\chapternamenum}{}
+	%% - Font for the chapter number
+	\renewcommand*{\chapnumfont}{\normalfont\large\heiti}
+	%% - Chapter number @mainmatter
+	\renewcommand*{\printchapternum}{\chapnumfont \thechapter\quad}
+	%% - Chapter number @othermatter, \centring
+	\renewcommand*{\printchapternonum}{\centering}
+	%% - Nothing following the number
+	\renewcommand*{\afterchapternum}{}
+	%% - Font for the chapter title, the same as the chapter number
+	\renewcommand*{\chaptitlefont}{\chapnumfont}
 }
 
 
@@ -507,6 +542,8 @@
 %% END: Headings
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+%% # TODO: 2016-06-03 Redefine the chapter name of appendix
+% \renewcommand*{\appendixname}{附录}
 
 %% Tmp
 
