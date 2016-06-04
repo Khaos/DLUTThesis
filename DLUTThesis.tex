@@ -49,7 +49,7 @@
 
 \frontmatter
 \cleardoublepage
-\chapter{摘　　要}
+\chapter*{摘　　要}
 
 中文
 
@@ -211,17 +211,19 @@ Line 2
 
 \lipsum[1-9]
 
-\backmatter
 
 %% if endnotes then
 \printpagenotes
 %% if a bibliography then
-\begin{thebibliography}...\end{thebibliography}
+\begin{thebibliography}
+	...
+\end{thebibliography}
 %% if appendices, then
 \appendix
 % \chapterstyle{dlutappendix}
 \chapter{...}
 ...
+\backmatter
 %% if Biographical sketch then
 % \begin{biosketch} ... \end{biosketch}
 

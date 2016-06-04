@@ -495,7 +495,8 @@
 	/dlut/.cd,
 	%% - Chapter heading style
 	chapterheading/.is choice,
-	chapterheading/dlut/.code={\chapterstyle{dlut}},
+	chapterheading/dlut/.code={\chapterstyle{dlut}
+							   \addtodef{\appendix}{}{\chapterstyle{dlutappendix}}},
 	chapterheading/default/.code={\chapterstyle{default}},
 	chapterheading/.default=default,
 	chapterheading/.append code={\def\@dlut@chapter@heading{#1}},
@@ -525,19 +526,19 @@
 	\renewcommand*{\chaptitlefont}{\chapnumfont}
 }
 
+%%   - The appendix heading style for DLUT
 \makechapterstyle{dlutappendix}{%
 	%% - Initialisation, dlut
 	\chapterstyle{dlut}
-	%% -
+	%% - Set the chapter name font (\chapnumfont)
 	\renewcommand*{\chapnamefont}{\chapnumfont}
+	%% - Centring the heading
 	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
-	\renewcommand*{\chapternamenum}{\space}
-	%% # FIXME: 2016-06-03 The chapter number of appendix is not displayed
-	\renewcommand*{\printchapternonum}{%
-		\centering \chapnamefont \@chapapp \thechapter\quad}
 }
+%% # DONE:20 2016-06-03 The chapter number of appendix is not displayed.
+%%     Put \backmatter after the appendix
 
-\addtodef{\appendix}{}{\chapterstyle{dlutappendix}}
+% \addtodef{\appendix}{}{\chapterstyle{dlutappendix}}
 
 %% # TODO:0 2016-06-02 Define the section headings
 %% # TODO:10 2016-06-02 Define the subsection headings
@@ -547,12 +548,18 @@
 %% END: Headings
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+%% # TODO: 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+
 %% # TODO: 2016-06-03 Redefine the chapter name of appendix
-\renewcommand*{\appendixname}{附录}
+% \renewcommand*{\appendixname}{附录}
+%% * The leading name of appendix in ToC, LoF and LoT.
+\renewcommand*{\cftappendixname}{附录}
 
 %% Tmp
 
-%%
+%% # TODO: 2016-06-05 Make a key to control the indentation
+%% * Indentation after the chapter
 \indentafterchapter
 
 %% * Floating parameters
