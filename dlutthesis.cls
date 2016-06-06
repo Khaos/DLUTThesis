@@ -546,12 +546,15 @@
 %% * Define the chapter heading keys
 \pgfkeys{%
 	/dlut/.cd,
-	%% - Chapter heading style
+	%% - Other heading styles
 	sectionheading/.is choice,
 	sectionheading/dlut/.code={\headstyles{dlut}
 							   \chapterstyle{dlut}},
 	sectionheading/default/.code={\headstyles{default}},
 	sectionheading/.default=dlut,
+	%% - Section numbering depth
+	secnumdepth/.code={\setsecnumdepth{#1}},
+	maxsecnumdepth/.code={\maxsecnumdepth{#1}},
 }
 
 %% * Define the chapter heading style
