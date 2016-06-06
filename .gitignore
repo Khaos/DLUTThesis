@@ -21,6 +21,8 @@ recycle
 *.sublime-workspace
 .Renviron
 
+!Figs/pdf/Declaration.pdf
+
 Doc/Example/*.*
 !Doc/Example/*.tex
 !Doc/Example/*.sty
