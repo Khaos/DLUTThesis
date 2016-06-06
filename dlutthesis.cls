@@ -202,6 +202,9 @@
 %% * Load DLUT style
 \pagestyle{dlut}
 
+%% * Uppercase Roman letters for the page numbers in the front matter
+\addtodef*{\@memfront}{}{\pagenumbering{Roman}}
+
 %% END: Page Styles
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
