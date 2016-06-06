@@ -74,7 +74,10 @@
 \RequirePackage{xltxtra}
 
 %% * CTeX
-\RequirePackage[fontset = adobe, UTF8, scheme = chinese, zihao = -4]{ctex}
+\RequirePackage[fontset = adobe,
+				UTF8,
+				scheme = chinese,
+				zihao = -4]{ctex}
 
 %% * Paragraph style
 % \RequirePackage{indentfirst}
@@ -207,7 +210,7 @@
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
 
-%% # DONE:0 x 2016-06-01 2016-05-31 Define the title page
+%% # DONE:10 x 2016-06-01 2016-05-31 Define the title page
 %% * IFs for elements in the title page
 \newif\if@dlut@titlepage@thesis@exist
 \newif\if@dlut@titlepage@title@exist
@@ -465,7 +468,7 @@
 	\fi
 }
 
-%% # DONE:10 x 2016-06-02 2016-06-01 Plagiarism declaration
+%% # DONE:20 x 2016-06-02 2016-06-01 Plagiarism declaration
 \newcommand{\makedeclaration}{%
     \begin{alwayssingle}
         \thispagestyle{empty}
@@ -481,7 +484,7 @@
 %% 5. Headings
 %% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
-%% # DOING:0 2016-06-02 Define the chapter headings
+%% # DONE:40 x 2016-06-03 2016-06-02 Define the chapter headings
 
 %% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
 %%   default value, 'default'.
@@ -497,7 +500,8 @@
 	/dlut/.cd,
 	%% - Chapter heading style
 	chapterheading/.is choice,
-	chapterheading/dlut/.code={\chapterstyle{dlut}},
+	chapterheading/dlut/.code={\chapterstyle{dlut}
+							   \addtodef{\appendix}{}{\chapterstyle{dlutappendix}}},
 	chapterheading/default/.code={\chapterstyle{default}},
 	chapterheading/.default=default,
 	chapterheading/.append code={\def\@dlut@chapter@heading{#1}},
@@ -516,7 +520,7 @@
 	%% - No space between chapter name and chapter number
 	\renewcommand*{\chapternamenum}{}
 	%% - Font for the chapter number
-	\renewcommand*{\chapnumfont}{\normalfont\large\heiti}
+	\renewcommand*{\chapnumfont}{\normalfont\large\heiti} %% 小三、黑体
 	%% - Chapter number @mainmatter
 	\renewcommand*{\printchapternum}{\chapnumfont \thechapter\quad}
 	%% - Chapter number @othermatter, \centring
@@ -527,34 +531,101 @@
 	\renewcommand*{\chaptitlefont}{\chapnumfont}
 }
 
+%%   - The appendix heading style for DLUT
 \makechapterstyle{dlutappendix}{%
 	%% - Initialisation, dlut
 	\chapterstyle{dlut}
-	%% -
+	%% - Set the chapter name font (\chapnumfont)
 	\renewcommand*{\chapnamefont}{\chapnumfont}
+	%% - Centring the heading
 	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
-	\renewcommand*{\chapternamenum}{\space}
-	%% # FIXME: 2016-06-03 The chapter number of appendix is not displayed
-	\renewcommand*{\printchapternonum}{%
-		\centering \chapnamefont \@chapapp \thechapter\quad}
 }
 
-\addtodef{\appendix}{}{\chapterstyle{dlutappendix}}
+%% # DONE:30 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
+%%     Put \backmatter after the appendix
 
-%% # TODO:0 2016-06-02 Define the section headings
-%% # TODO:10 2016-06-02 Define the subsection headings
+%% # DONE:0 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
+%% * Define the chapter heading keys
+\pgfkeys{%
+	/dlut/.cd,
+	%% - Other heading styles
+	sectionheading/.is choice,
+	sectionheading/dlut/.code={\headstyles{dlut}
+							   \chapterstyle{dlut}},
+	sectionheading/default/.code={\headstyles{default}},
+	sectionheading/.default=dlut,
+	%% - Section numbering depth
+	secnumdepth/.code={\setsecnumdepth{#1}},
+	maxsecnumdepth/.code={\maxsecnumdepth{#1}},
+}
+
+%% * Define the chapter heading style
+%%   - The 'dlut' style
+\makeheadstyles{dlut}{%
+	%% - The default heading style
+	\defaultsecheads
+	%% - Section heading style
+	\setsecheadstyle{\normalfont\zihao{4}\heiti\raggedright}
+	%% !!! Any positive value can guarantee the indentation of the following text
+	\setbeforesecskip{.5em plus 0.5ex minus .2ex}
+    \setaftersecskip{.5em plus .2ex}
+	%% - Subsection heading style
+	\setsubsecheadstyle{\normalfont\heiti\raggedright}
+	\setbeforesubsecskip{.5em plus 0.5ex minus .2ex}
+	\setaftersubsecskip{.5em plus .2ex}
+	%% - Subsubsection heading style
+	\setsubsubsecheadstyle{\normalfont\heiti\raggedright}
+	\setbeforesubsubsecskip{.5em plus 0.5ex minus .2ex}
+	\setaftersubsubsecskip{.5em plus .2ex}
+	%% - Paragraph heading style
+	\setbeforeparaskip{.2em plus 0.5ex minus .2ex}
+	%% - Subparagraph heading style
+	\setbeforesubparaskip{.2em plus 0.5ex minus .2ex}
+}
+
+%% * The default head style
+\newcommand*{\defaultsecheads}{
+  \defaultsecnum
+  \setsecheadstyle{\normalfont\Large\bfseries\raggedright}
+    \setsecindent{\z@}
+    \setbeforesecskip{-3.5ex plus -1ex minus -.2ex}
+    \setaftersecskip{2.3ex plus .2ex}
+  \setsubsecheadstyle{\normalfont\large\bfseries\raggedright}
+    \setsubsecindent{\z@}
+    \setbeforesubsecskip{-3.25ex plus -1ex minus -.2ex}
+    \setaftersubsecskip{1.5ex plus .2ex}
+  \setsubsubsecheadstyle{\normalfont\bfseries\raggedright}
+    \setsubsubsecindent{\z@}
+    \setbeforesubsubsecskip{-3.25ex plus -1ex minus -.2ex}
+    \setaftersubsubsecskip{1.5ex plus .2ex}
+  \setparaheadstyle{\normalfont\bfseries}
+    \setparaindent{\z@}
+    \setbeforeparaskip{3.25ex plus 1ex minus .2ex}
+    \setafterparaskip{-1em}
+  \setsubparaheadstyle{\normalfont\bfseries}
+    \setsubparaindent{\z@}
+    \setbeforesubparaskip{3.25ex plus 1ex minus .2ex}
+    \setaftersubparaskip{-1em}
+}
+
 
 
 
 %% END: Headings
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-%% # TODO: 2016-06-03 Redefine the chapter name of appendix
-\renewcommand*{\appendixname}{附录}
+
+%% # TODO:20 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+
+%% # TODO:0 2016-06-03 Redefine the chapter name of appendix
+% \renewcommand*{\appendixname}{附录}
+%% * The leading name of appendix in ToC, LoF and LoT.
+\renewcommand*{\cftappendixname}{附录}
 
 %% Tmp
 
-%%
+%% # TODO:10 2016-06-05 Make a key to control the indentation
+%% * Indentation after the chapter
 \indentafterchapter
 
 %% * Floating parameters
