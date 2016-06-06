@@ -625,6 +625,16 @@
 %% * Set the default TOC depth
 \maxtocdepth{subsection}    % include subsections in ToC
 
+%% * Change the title texts of ToC, LoF and LoT
+\ctexset{%
+	contentsname = {目　　录},
+	listfigurename = {图目录},
+	listtablename = {表目录}
+}
+
+%% * The looking of CFT
+\renewcommand{\cftdotsep}{0.4}
+
 %% # TODO:20 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
 
 %% END: ToC

@@ -46,18 +46,18 @@
 
 
 \begin{document}
-\maxtocdepth{subsection} % put 3 levels into the ToC
-% \maxsecnumdepth{subsection}
 
+%% * The title page
 \maketitle
 
+%% * Plagiarism declaration
 \cleardoublepage
 \makedeclaration
 
+%% * The front matter
 \frontmatter
 
-% \pagenumbering{Roman}
-
+%%   - Chinese abstract
 \cleardoublepage
 \chapter*{摘　　要}
 
@@ -66,6 +66,7 @@
 第二行
 
 
+%%   - English abstract
 \cleardoublepage
 \chapter*{ABSTRACT}
 
@@ -73,18 +74,27 @@ English
 
 Line 2
 
+
+%%   - ToC, LoF and LoT
+%%     - Chinese ToC
 \cleardoublepage
+\tableofcontents*
+
+%%     - English ToC
 
 
-\begin{KeepFromToc}
+%%     - List of figures
+\cleardoublepage
+\listoffigures*
 
-\tableofcontents
-% \listoffigures % if you have any figures
-% \listoftables % if you have any tables
+%%     - List of tables
+\vspace{3em}
+\listoftables*
 
-\end{KeepFromToc}
+%% * The main matter
 \mainmatter
 
+%%   - Chapter I
 \chapter{章节标题}
 
 道可道，非常道。名可名，非常名。无名天地之始。有名万物之母。故常无欲以观其妙。常有欲以观
