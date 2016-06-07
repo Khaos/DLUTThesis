@@ -633,7 +633,34 @@
 }
 
 %% * The looking of CFT
+%%   - Add dots after chapter title text
+\renewcommand*{\cftchapterdotsep}{\cftdotsep}
+
+%%   - The dot seperator
 \renewcommand{\cftdotsep}{0.4}
+
+%%   - CFT numbering space
+\setpnumwidth{1.75em}
+\setrmarg{1.8em}
+
+%%   - Chapter
+%%     - Vertical space before every chapter line
+\setlength{\cftbeforechapterskip}{.1em}
+%%     - The chapter text font
+\renewcommand*{\cftchapterfont}{\normalfont}
+%%     - The chapter dots
+\renewcommand{\cftchapterleader}{%
+			  \normalfont\cftdotfill{\cftchapterdotsep}}
+%%     - The page number font
+\renewcommand*{\cftchapterpagefont}{\normalfont}
+
+%%   - Section
+%%     - Indentation, 两倍字宽
+\setlength{\cftsectionindent}{2 \ccwd}
+
+%%   - Subsection
+%%     - Indentation, 四倍字宽
+\setlength{\cftsubsectionindent}{4 \ccwd}
 
 %% # TODO:20 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
 
