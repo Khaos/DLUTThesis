@@ -681,6 +681,16 @@
 %%     - Indentation, 四倍字宽
 \setlength{\cftsubsectionindent}{4 \ccwd}
 
+%%   - Figure
+%%     - Indentation, 两倍字宽
+\setlength{\cftfigureindent}{2 \ccwd}
+\setlength{\cftfigurenumwidth}{2.5em}
+
+%%   - Table
+%%     - Indentation, 两倍字宽
+\setlength{\cfttableindent}{2 \ccwd}
+\setlength{\cfttablenumwidth}{2.5em}
+
 %% * English ToC
 %%   - Create a new table of ENGLISH contents
 \newlistof{tableofencontents}{toe}{\encontentsname}
@@ -722,6 +732,10 @@
 %% # DONE:0 x 2016-06-08 2016-06-03 Redefine the chapter name of appendix
 %% * The leading name of appendix in ToC, LoF and LoT.
 \renewcommand*{\cftappendixname}{附录}
+%% * The leading name of figure in ToC, LoF and LoT.
+\renewcommand*{\cftfigurename}{图}
+%% * The leading name of table in ToC, LoF and LoT.
+\renewcommand*{\cfttablename}{表}
 
 %% END: ToC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
