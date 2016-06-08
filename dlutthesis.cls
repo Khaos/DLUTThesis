@@ -61,6 +61,12 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions\relax
 \LoadClass[a4paper]{memoir}
+
+%% ! DLUTThesis relies on the memoir class
+\@ifclassloaded{memoir}{\let\enddlutthesis\relax}{\let\enddlutthesis\endinput
+  \PackageError{DLUTThesis}{The DLUTThesis package only works with the memoir class}{\@ehd}}
+\enddlutthesis
+
 %% END: Initialization
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
