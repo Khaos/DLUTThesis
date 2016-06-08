@@ -218,7 +218,7 @@
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
 
-%% # DONE:20 x 2016-06-01 2016-05-31 Define the title page
+%% # DONE:30 x 2016-06-01 2016-05-31 Define the title page
 %% * IFs for elements in the title page
 \newif\if@dlut@titlepage@thesis@exist
 \newif\if@dlut@titlepage@title@exist
@@ -240,7 +240,7 @@
 	\def\maketitle{\@dlut@maketitle@orig}
 }
 
-%% # TODO:10 2016-06-03 Simplify the keys
+%% # TODO:0 2016-06-03 Simplify the keys
 
 %% * Define title-page-related keys
 \pgfkeys{%
@@ -476,7 +476,7 @@
 	\fi
 }
 
-%% # DONE:30 x 2016-06-02 2016-06-01 Plagiarism declaration
+%% # DONE:40 x 2016-06-02 2016-06-01 Plagiarism declaration
 \newcommand{\makedeclaration}{%
     \begin{alwayssingle}
         \thispagestyle{empty}
@@ -492,7 +492,7 @@
 %% 5. Headings
 %% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
-%% # DONE:50 x 2016-06-03 2016-06-02 Define the chapter headings
+%% # DONE:60 x 2016-06-03 2016-06-02 Define the chapter headings
 
 %% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
 %%   default value, 'default'.
@@ -549,10 +549,10 @@
 	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
 }
 
-%% # DONE:40 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
+%% # DONE:50 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
 %%     Put \backmatter after the appendix
 
-%% # DONE:10 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
+%% # DONE:20 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
 %% * Define the chapter heading keys
 \pgfkeys{%
 	/dlut/.cd,
@@ -680,18 +680,31 @@
 	  \addcontentsline{toe}{chapter}{%
 	    \cftenappendixname~\protect\chapternumberline{\thechapter} #3}
 	\else
-	  \addcontentsline{toe}{chapter}{\protect\chapternumberline{\thechapter}#3}
-	\fi
+	  \addcontentsline{toe}{chapter}{\protect\chapternumberline{\thechapter} #3}
+	\fi%
 }
+%%   - The leading name of appendix in ToE.
 \newcommand*{\cftenappendixname}{The Appendix}
 
+%% * Add a new argument, the english title, to the lower section macro
+\LetLtxMacro{\@dlut@M@sect@orig}{\M@sect}
+\def\M@sect#1#2#3#4#5#6[#7][#8]#9{%
+	\@dlut@M@sect@orig{#1}{#2}{#3}{#4}{#5}{#6}[#7][#8]{#9}
+	\@dlut@toe@sect{#1}
+}
 
-%% # DONE:0 x 2016-06-07 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+%%   - The second argument of the below macro is the token of the english title
+\def\@dlut@toe@sect#1#2{%
+	\phantomsection%
+	\addcontentsline{toe}{#1}{%
+		\protect\numberline{\csname the#1\endcsname} #2}%
+}
+
+%% # DONE:10 x 2016-06-07 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
 %%     This can be done by using the star version of CFT commands, see the main
 %%     TeX files.
 
-%% # TODO:0 2016-06-03 Redefine the chapter name of appendix
-% \renewcommand*{\appendixname}{附录}
+%% # DONE:0 x 2016-06-08 2016-06-03 Redefine the chapter name of appendix
 %% * The leading name of appendix in ToC, LoF and LoT.
 \renewcommand*{\cftappendixname}{附录}
 
@@ -709,7 +722,7 @@
 
 %% Tmp
 
-%% # TODO:20 2016-06-05 Make a key to control the indentation
+%% # TODO:10 2016-06-05 Make a key to control the indentation
 %% * Indentation after the chapter
 \indentafterchapter
 
