@@ -25,10 +25,18 @@
 %%         - Section headings
 %%         - Subsection headings
 %%       - ToC
+%%         - ToC configuration
+%%         - English ToC
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% * Change Log
+%%   @ 2016-06-08 11:08:20 +0800 (Wed, 08 Jun 2016)
+%%     - Set up CFT
+%%   @ 2016-06-06 08:53:17 +0800 (Mon, 06 Jun 2016)
+%%     - Define the 'dlut' section/subsection/etc. heading style
+%%   @ 2016-06-03 16:13:59 +0800 (Fri, 03 Jun 2016)
+%%     - Define the 'dlut' chapter heading style
 %%   @ 2016-06-02 14:26:34 +0800 (Thu, 02 Jun 2016)
 %%     - Merge the plagiarism declaration page
 %%   @ 2016-06-01 20:45:10 +0800 (Wed, 01 Jun 2016)
