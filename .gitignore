@@ -18,6 +18,7 @@ recycle
 *.snm
 *.synctex.gz
 *.toc
+*.toe
 *.sublime-workspace
 .Renviron
 

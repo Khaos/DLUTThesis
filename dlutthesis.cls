@@ -85,6 +85,10 @@
 %% * Other font packages
 \RequirePackage{CJKnumb}
 
+%% * ToC
+% \RequirePackage{titletoc}
+\RequirePackage{letltxmacro}
+
 %% * MISC
 \RequirePackage{ulem}  %% Underlining command: \uline
 \renewcommand{\ULthickness}{.75pt} %% Default: .4pt
@@ -214,7 +218,7 @@
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
 
-%% # DONE:10 x 2016-06-01 2016-05-31 Define the title page
+%% # DONE:20 x 2016-06-01 2016-05-31 Define the title page
 %% * IFs for elements in the title page
 \newif\if@dlut@titlepage@thesis@exist
 \newif\if@dlut@titlepage@title@exist
@@ -236,7 +240,7 @@
 	\def\maketitle{\@dlut@maketitle@orig}
 }
 
-%% # TODO: 2016-06-03 Simplify the keys
+%% # TODO:10 2016-06-03 Simplify the keys
 
 %% * Define title-page-related keys
 \pgfkeys{%
@@ -472,7 +476,7 @@
 	\fi
 }
 
-%% # DONE:20 x 2016-06-02 2016-06-01 Plagiarism declaration
+%% # DONE:30 x 2016-06-02 2016-06-01 Plagiarism declaration
 \newcommand{\makedeclaration}{%
     \begin{alwayssingle}
         \thispagestyle{empty}
@@ -488,7 +492,7 @@
 %% 5. Headings
 %% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
-%% # DONE:40 x 2016-06-03 2016-06-02 Define the chapter headings
+%% # DONE:50 x 2016-06-03 2016-06-02 Define the chapter headings
 
 %% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
 %%   default value, 'default'.
@@ -545,10 +549,10 @@
 	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
 }
 
-%% # DONE:30 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
+%% # DONE:40 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
 %%     Put \backmatter after the appendix
 
-%% # DONE:0 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
+%% # DONE:10 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
 %% * Define the chapter heading keys
 \pgfkeys{%
 	/dlut/.cd,
@@ -662,7 +666,34 @@
 %%     - Indentation, 四倍字宽
 \setlength{\cftsubsectionindent}{4 \ccwd}
 
-%% # TODO:20 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+%% * English ToC
+%%   - Create a new table of ENGLISH contents
+\newlistof{tableofencontents}{toe}{\encontentsname}
+\newcommand*{\encontentsname}{TABLE OF CONTENTS}
+
+%% * Add a new argument, the english title, to the \chapter macro
+\LetLtxMacro{\@dlut@chapter@orig}{\@chapter}
+\def\@chapter[#1]#2#3{%
+	\@dlut@chapter@orig[#1]{#2} %% #2 has to be surrounded by braces, e.g. {#2}
+	\phantomsection%
+	\ifanappendix
+	  \addcontentsline{toe}{chapter}{%
+	    \cftenappendixname~\protect\chapternumberline{\thechapter} #3}
+	\else
+	  \addcontentsline{toe}{chapter}{\protect\chapternumberline{\thechapter}#3}
+	\fi
+}
+\newcommand*{\cftenappendixname}{The Appendix}
+
+
+%% # DONE:0 x 2016-06-07 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+%%     This can be done by using the star version of CFT commands, see the main
+%%     TeX files.
+
+%% # TODO:0 2016-06-03 Redefine the chapter name of appendix
+% \renewcommand*{\appendixname}{附录}
+%% * The leading name of appendix in ToC, LoF and LoT.
+\renewcommand*{\cftappendixname}{附录}
 
 %% END: ToC
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -675,14 +706,10 @@
 %% END: Spacing
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-%% # TODO:0 2016-06-03 Redefine the chapter name of appendix
-% \renewcommand*{\appendixname}{附录}
-%% * The leading name of appendix in ToC, LoF and LoT.
-\renewcommand*{\cftappendixname}{附录}
 
 %% Tmp
 
-%% # TODO:10 2016-06-05 Make a key to control the indentation
+%% # TODO:20 2016-06-05 Make a key to control the indentation
 %% * Indentation after the chapter
 \indentafterchapter
 
