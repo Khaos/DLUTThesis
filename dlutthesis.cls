@@ -121,6 +121,20 @@
 \RequirePackage{pgfplots}
 \RequirePackage{pgfplotstable}
 
+%%   - Load the tikz libraries
+\usetikzlibrary{%
+	arrows,%
+	calc,%
+	fit,%
+	patterns,%
+	plotmarks,%
+	external,%
+}
+
+%%   - Load the pgfplots libraries
+\usepgfplotslibrary{dateplot,%
+					units,%
+					groupplots}
 
 %% * MISC
 \RequirePackage{ulem}  %% Underlining command: \uline
