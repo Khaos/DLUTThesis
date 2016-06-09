@@ -791,6 +791,74 @@
 %% 8. Graphics
 %% Created by Dazhi Jiang, 2016-06-09 08:18:38 +0800 (Thu, 09 Jun 2016)
 
+%% * PSTricks
+%%   - Define IFs for PSTricks
+\newif\if@dlut@pstricks@load
+\newif\if@dlut@pstricks@fig
+\@dlut@pstricks@figfalse
+
+%%   - Define package option keys for PSTricks options
+\pgfkeys{%
+	/dlutopt/.cd,
+	%% - Options for PSTricks
+	pstricks/.is if=@dlut@pstricks@load,
+	pstricks/.default=false,
+	pstricks/.initial=false,
+	pstricks/.append code={\@dlut@pstricks@load},
+	pstricks/figure/.is if=@dlut@pstricks@fig,
+	pstricks/figure/.default=false,
+	pstricks/figure/.initial=false,
+	pstricks/package/.code={#1},
+}
+
+\newcommand{\@dlut@pstricks@load}{%
+	\if@dlut@pstricks@load
+		\RequirePackage{pstricks}
+		\RequirePackage{pst-node}
+		\RequirePackage{pst-tree}
+		\RequirePackage{pst-plot}
+		\RequirePackage{pst-text}
+		\RequirePackage{pstricks-add}
+		\RequirePackage[active,tightpage]{preview}
+		\PreviewEnvironment{pspicture}
+		\setlength\PreviewBorder{0.1pt}
+	\fi
+}
+
+
+%% * PGF/TikZ
+%%   - Externalising
+%%     - 'IF' for externalising
+\newif\if@dlut@pgf@externalexpensive
+\let\@dlut@pgf@externalexpensivetrue@orig=\@dlut@pgf@externalexpensivetrue
+
+%%   - Command for switching on the externalising library
+%%   ! Use \@dlut@pgf@externalexpensivetrue to externalise expensive figures
+\def\@dlut@pgf@externalexpensivetrue{%
+	\if@dlut@pstricks@fig
+		\@dlut@pgf@externalexpensivefalse
+	\else
+	%% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
+	\@dlut@pgf@externalexpensivetrue@orig
+	\tikzexternalize[
+		prefix=Figs/pdf/pgf-ex-,
+		export=false, %% needs to be activated individually
+		mode=list and make,
+		verbose IO=false,
+		% export=true, %% FASTER FOR DEBUGGING
+	]
+	%% !!!
+	%% Changed by Dazhi Jiang - 2010-09-20
+	%% The following line is commented since the new definition of
+	%% \tikzexternalize in PGF 2.0 cvs
+	% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+	\fi
+}%
+
+
 %% END: Graphics
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
