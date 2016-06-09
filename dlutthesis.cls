@@ -108,9 +108,11 @@
 \RequirePackage{letltxmacro}
 
 %% * Graphic packages
-\RequirePackage{graphics}							% Graphy style
+% \RequirePackage{graphics}							% Graphy style
 \RequirePackage[usenames, dvipsnames]{color}		% Color
 \RequirePackage{graphicx}
+\graphicspath{{Figs/pdf/}{Figs/png/}}  %% Specify the figure directories
+
 %% !!! Comment
 %%     The package 'xcolor' has to be loaded before the package 'pstricks'.
 \RequirePackage[svgnames]{xcolor}
