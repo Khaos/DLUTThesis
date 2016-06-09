@@ -107,6 +107,21 @@
 % \RequirePackage{titletoc}
 \RequirePackage{letltxmacro}
 
+%% * Graphic packages
+\RequirePackage{graphics}							% Graphy style
+\RequirePackage[usenames, dvipsnames]{color}		% Color
+\RequirePackage{graphicx}
+%% !!! Comment
+%%     The package 'xcolor' has to be loaded before the package 'pstricks'.
+\RequirePackage[svgnames]{xcolor}
+
+%%   - PGF/Tikz package
+\RequirePackage{pgf}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
+
+
 %% * MISC
 \RequirePackage{ulem}  %% Underlining command: \uline
 \renewcommand{\ULthickness}{.75pt} %% Default: .4pt
