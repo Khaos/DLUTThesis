@@ -826,6 +826,7 @@
 }
 
 
+%% ------------------------------------------------------------
 %% * PGF/TikZ
 %%   - Externalising
 %%     - 'IF' for externalising
@@ -858,7 +859,6 @@
 	\fi
 }%
 
-%% ------------------------------------------------------------
 %% !!!
 %% Modified by Dazhi Jiang, 2010-12-25 17:09:03 +0000 (Sat, 25 Dec 2010)
 %% A modified alias of \@dlut@pgf@externalexpensivetrue
@@ -868,20 +868,21 @@
 		\@dlut@pgf@externalexpensivefalse
 	\else
 	% \def\dlut@pgf@externalexpensivetrue#1{%
-	\usepgfplotslibrary{external}
+    %% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
+	% \usepgfplotslibrary{external}
 	\@dlut@pgf@externalexpensivetrue@orig
 	\tikzexternalize[
-		prefix=Figs/pdf/pgfexternalfig-,
-		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		prefix=Figs/pdf/pgf-ex-,
+		export=false, % needs to be activated individually
 		mode=list and make,
 		verbose IO=false,
-		%xport=true,% FASTER FOR DEBUGGING
+		% export=true,% FASTER FOR DEBUGGING
 	]{#1}
-		%% !!!
-		%% Changed by Dazhi Jiang - 2010-09-20
-		%% The following line is commented since the new definition of
-		%% \tikzexternalize in PGF cvs
-		% {pgfplots}
+    %% !!!
+	%% Changed by Dazhi Jiang - 2016-06-10
+	%% The following line is commented since the new definition of
+	%% \tikzexternalize in PGF cvs
+	% {pgfplots}
 	\tikzifexternalizing{%
 		\nofiles
 	}{}%
