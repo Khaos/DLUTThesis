@@ -22,10 +22,13 @@
 对于一般用户，可以忽略具体的实现细节，直接使用预绘制接口，使用方法如下：
 
 1. 在主文档preamble部分指定主文档名称，例如
+
     ```latex
     \dlutset{pgf/externalmainfile=DLUTThesis}
     ```
+
 2. 正文部分需要插入tikz图形的部分，以如下格式插入图形
+
     ```latex
     \begin{figure}[!htbp]
     	\centering
@@ -35,14 +38,19 @@
     	\label{fig:id}
     \end{figure}%
     ```
+
 3. 预绘制图形（以xelatex命令为例）
+
     ```shell
     xelatex -shell-escape -halt-on-error -interaction=batchmode -jobname "pdf-filename" "DLUTThesis"
     ```
+
 4. 主文档中插入图形
+
     ```shell
     xelatex -shell-escape DLUTThesis.tex
     ```
+
 
 ## 参考文献
 
