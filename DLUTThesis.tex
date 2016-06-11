@@ -28,7 +28,10 @@
 	%% - Section heading
 	sectionheading=dlut,
 	%% - Section numbering
-	maxsecnumdepth=subsection
+	maxsecnumdepth=subsection,
+	%% - Pgf/TikZ
+	pgf/externalmainfile=DLUTThesis,
+	pgf/externalprefix={Figs/pdf/pgf-}
 }
 
 %% * Define the elements of title page
@@ -43,6 +46,30 @@
 	date={\today},
 	% university={Dalian University of Technology},
 }
+
+\usepackage{mathtools}
+\usepackage{esvect}
+
+\usetikzlibrary{circuits,%
+	circuits.logic,%
+	intersections,%
+	scopes, arrows, fadings, patterns,%
+	decorations.pathreplacing,%
+	decorations.pathmorphing,%
+	positioning,
+	shadows,
+	shadings,%
+	shapes.misc,%
+	shapes.geometric,%
+	external,
+	calc,
+	mindmap,
+	chains,
+}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
 
 
 \begin{document}
@@ -145,6 +172,15 @@ Line 2
 		{}{长\cs{bicaption}}%
 		{Figure}{Long \cs{bicaption}}
 \end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	% \suacseset{pgf/makeexternalfig}
+	\dlutset{pgf/makenextfig=c-IP}
+	\input{Figs/Src/IP.tkz}
+	\caption{Inverted Pendulum.}
+	\label{fig:IP}
+\end{figure}%
 
 
 \chapter{中文}{Chinese} % start of your main text

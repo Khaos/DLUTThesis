@@ -1,0 +1,194 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% InvertedPendulum.tikz    Inverted Pendulum
+%% Draw an inverted pendulum using PGF/TikZ
+%% MAIN FILE: ../../TikZGallery.tex
+%% Created by Dazhi Jiang, 2011-02-01 16:49:22 +0000 (Tue,  1 Feb 2011)
+%% Copyright (c) 2011 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX root = ../../TikZGallery.tex
+
+\newif\ifpendulumcolored
+\pendulumcoloredtrue
+
+\ifpendulumcolored
+
+\tikzset{%
+	interface/.style={
+		% The border decoration is a path replacing decorator. 
+		% For the interface style we want to draw the original path.
+		% The postaction option is therefore used to ensure that the
+		% border decoration is drawn *after* the original path.
+		postaction={draw, decorate, decoration={border, angle=-45,
+					amplitude=0.3cm, segment length=2mm}}},
+	helparrow/.style={>=latex', blue, thick},
+	% helparrow/.style={>=latex', draw=blue, fill=blue, very thick},
+	helpline/.style={thin, black!90, opacity=0.5},
+	force/.style={>=stealth, draw=blue, fill=blue, ultra thick},
+	cart/.style={draw = black,%fill = black!40,%
+				top color = green!5,%
+				bottom color = green!40,%
+				% pattern=horizontal lines gray,%
+				},
+	pendulum/.style={draw = black,% fill = black!25,%
+					left color = red!10,%
+					bottom color = red!40,%
+					% pattern=horizontal lines gray,%
+					},
+	ground/.style={fill=brown!20},
+	inner wheel/.style={fill=Silver!50},
+	outer wheel/.style={thin,double = black!75,double distance = 0.6mm,black},
+	wheel shadow/.style={thin,fill = black!70,path fading = south},
+	xycoord/.style={<->, thick, black!50},
+}
+
+\else
+
+\tikzset{%
+	interface/.style={
+		% The border decoration is a path replacing decorator. 
+		% For the interface style we want to draw the original path.
+		% The postaction option is therefore used to ensure that the
+		% border decoration is drawn *after* the original path.
+		postaction={draw, decorate, decoration={border, angle=-45,
+					amplitude=0.3cm, segment length=2mm}}},
+	helparrow/.style={>=latex', blue, thick},
+	% helparrow/.style={>=latex', draw=blue, fill=blue, very thick},
+	helpline/.style={thin, black!90, opacity=0.5},
+	force/.style={>=stealth, draw=blue, fill=blue, ultra thick},
+	cart/.style={draw = black!80,%fill = black!40,%
+				top color = black!10,%
+				bottom color = black!40,%
+				% pattern=horizontal lines gray,%
+				},
+	pendulum/.style={draw = black!80,% fill = black!25,%
+					left color = black!10,%
+					bottom color = black!40,%
+					% pattern=horizontal lines gray,%
+					},
+	ground/.style={fill=black!20},
+	% ground/.style={fill=black!20},
+	inner wheel/.style={fill=black!30},
+	outer wheel/.style={thin,double = black!20,double distance = 0.5mm},
+	wheel shadow/.style={thin,fill = black!70,path fading = south},
+	xycoord/.style={<->, thick, black!50},
+}
+
+\fi
+
+\def\ground{%
+	\fill [ground] (0, 0) rectangle (49mm, -13mm);
+	\fill [ground] (49mm, 0) rectangle (80mm, -5mm);
+	\draw [thick, black!80, interface] (0, 0) -- (80mm, 0);
+	\draw [thick, black!80] (49mm, 0) -- +(0, -13mm);
+	% \draw [|->, helparrow] (49mm, -9mm) -- ++(20mm, 0) node [right] {$\gls{x}$};
+	\draw [|->, helparrow] (49mm, -9mm) -- ++(20mm, 0) node [right] {$x$};
+}
+
+\def\cart{
+	\filldraw [cart] (0,0) rectangle (30mm, 10mm);
+	% \node at (15mm, 5mm) {$\gls{M}$};
+	% \draw[->, force] (-15mm, 5mm) node [above] {$\gls{F}$} -- (0, 5mm);
+	\node at (15mm, 5mm) {$M$};
+	\draw[->, force] (-15mm, 5mm) node [above] {$\vv{F}$} -- (0, 5mm);
+	% \draw[->, force,] (40mm, -2.5mm) node [above, text = blue] {${\gls{b}}\textcolor{blue}{\dot{\gls{x}}}$} -- (26.5mm, -2.5mm);
+	% \draw[->, force,] (40mm, -2.5mm) node [above, text = blue] {$\gls{b}\gls{xspeed}$} -- (26.5mm, -2.5mm);
+	\draw[->, force,] (40mm, -2.5mm) node [above, text = blue] {$b\dot{x}$} -- (26.5mm, -2.5mm);
+	% \draw[->, force] (-15mm, 5mm) node [above] {$\vv{\gls{F}}$} -- (0, 5mm);
+	% \draw[->, force] (-15mm, 5mm) node [above] {$\vv{F}$} -- (0, 5mm);
+}
+
+\def\pendulum{%
+	\filldraw [pendulum] (-0.8mm, 0) rectangle (0.8mm, 20mm);
+}
+
+\def\joint{%
+	\filldraw [%thick,%
+		draw = black!80,%
+		fill = white,%
+		% pattern=horizontal lines gray,%
+		] (0, 0) circle (1mm);
+}
+
+\def\wheel{%
+	\fill [wheel shadow] (0, 0) circle (1.75mm);
+	\begin{scope}
+		\clip (0, 0) circle (1.75mm);
+		\fill [inner wheel] (0, -1mm) circle (2mm);
+	\end{scope}
+	\fill [fill=black!90] (0, 0) circle (0.5mm);
+	\draw [outer wheel] (0, 0) circle (2mm);
+}
+
+\def\xycoord{%
+	\draw [xycoord] (8mm,0) node [below right] {$x$} -- (0,0) -- (0,8mm) node [above left] {$y$};
+}
+
+%\tikzsetnextfilename{PIDBode}
+\begin{tikzpicture}[> = latex',%
+		scale = 1,%
+		text = blue,%
+		execute at end picture = {
+			\begin{pgfonlayer}{background}
+				%% * Compute a few help coordinates
+				% \coordinate (bl) at (-40mm, -24mm);
+				% \coordinate (tr) at (58mm, 45mm);
+				\coordinate (bl) at ($(current bounding box.south west) + (-5mm, -5mm)$);
+				\coordinate (tr) at ($(current bounding box.north east) + (+5mm, +5mm)$);
+				\draw [very thin, fill=white, %
+					  rounded corners = 1.5pt, %
+					  draw=black!50, %
+					  % decorate, %
+					  % decoration={random steps,segment length=3pt,amplitude=1pt}, %
+					  drop shadow={fill=black!30}, %
+					  % general shadow={fill=black!10, shadow scale=1.01}, %
+					  % dashed, %
+					  ]
+						% (inner box.south west) + (-5mm, -5mm) rectangle 
+						% (inner box.north east) + (5mm, 5mm);
+						(bl) rectangle (tr);
+				\useasboundingbox (bl) + (-1mm, -1mm) -- (tr) + (1mm, 1mm);
+			\end{pgfonlayer}
+		}
+		]
+	\begin{scope}[local bounding box = inner box]
+		\begin{scope}
+			\wheel
+		\end{scope}
+		\begin{scope}[xshift=18mm]
+			\wheel
+		\end{scope}
+		\begin{scope}[xshift=-31mm, yshift=-2.4mm]
+			\ground
+		\end{scope}
+		\begin{scope}[shift = {(-6mm, 2.4mm)}]
+			\cart
+		\end{scope}
+		\begin{scope}[shift = {(9mm, 12.4mm)}]
+			\draw [helpline] (0, -20mm) -- (0, 25mm);
+			\draw [helpline] (110:20.5mm) -- (110:25mm);
+			\draw [|->, helparrow] (0, 23mm) 
+				arc [radius=23mm, start angle=90, delta angle=20] ;
+			% \node at (97:25mm) {$\gls{thetaa}$};
+			\node at (97:25mm) {$\theta'$};
+			\draw [|->, helparrow] (0, -9mm) 
+				arc [radius=9mm, start angle=-90, delta angle=195] ;
+			% \node [above right] at (50:8.5mm) {$\gls{theta}$};
+			\node [above right] at (50:8.5mm) {$\theta$};
+			\draw [thin, helpline] (110:14mm) -- (-10mm, 10mm) 
+				node [left,opacity=1] {{\color{blue}$m$, $I$}};
+				% node [left] {$\gls{m}$, $\gls{I}$};
+		\end{scope}
+		\begin{scope}[shift = {(9mm, 12.4mm)}, rotate=20]
+			\pendulum
+		\end{scope}
+		\begin{scope}[shift = {(9mm, 12.4mm)}]
+			\joint
+		\end{scope}
+		\begin{scope}[shift = {(35mm, 12.4mm)}]
+			\xycoord
+		\end{scope}
+	\end{scope}
+
+\end{tikzpicture}

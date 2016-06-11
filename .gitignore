@@ -20,9 +20,16 @@ recycle
 *.toc
 *.toe
 *.sublime-workspace
+*.figlist
+*.makefile
 .Renviron
 
-!Figs/pdf/Declaration.pdf
+
+Figs/pdf/*.*
+!Figs/pdf/*.pdf
+Figs/Src/*.*
+!Figs/Src/*.tkz
+!Figs/Src/*.tikz
 
 Doc/Example/*.*
 !Doc/Example/*.tex

@@ -795,6 +795,7 @@
 %%   - Define IFs for PSTricks
 \newif\if@dlut@pstricks@load
 \newif\if@dlut@pstricks@fig
+%%     Default, false
 \@dlut@pstricks@figfalse
 
 %%   - Define package option keys for PSTricks options
@@ -837,58 +838,94 @@
 %%   ! Use \@dlut@pgf@externalexpensivetrue to externalise expensive figures
 \def\@dlut@pgf@externalexpensivetrue{%
 	\if@dlut@pstricks@fig
+        %% - Always disable the externalisation if pstricks is loaded
 		\@dlut@pgf@externalexpensivefalse
 	\else
-	%% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
-	\@dlut@pgf@externalexpensivetrue@orig
-	\tikzexternalize[
-		prefix=Figs/pdf/pgf-ex-,
-		export=false, %% needs to be activated individually
-		mode=list and make,
-		verbose IO=false,
-		% export=true, %% FASTER FOR DEBUGGING
-	]
-	%% !!!
-	%% Changed by Dazhi Jiang - 2016-06-09
-	%% The following line is commented since the new definition of
-	%% \tikzexternalize in PGF 2.0 cvs
-	% {pgfplots}
-	\tikzifexternalizing{%
-		\nofiles
-	}{}%
+        %% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
+        \@dlut@pgf@externalexpensivetrue@orig
+        \tikzexternalize[
+            prefix=Figs/pdf/pgf-ex-,
+            export=false, %% needs to be activated individually
+            mode=list and make,
+            verbose IO=false,
+            % export=true, %% FASTER FOR DEBUGGING
+        ]
+        %% !!!
+        %% Changed by Dazhi Jiang - 2016-06-09
+        %% The following line is commented since the new definition of
+        %% \tikzexternalize in PGF 2.0 cvs
+        % {pgfplots}
+        \tikzifexternalizing{\nofiles}{}%
 	\fi
-}%
+}
 
 %% !!!
-%% Modified by Dazhi Jiang, 2010-12-25 17:09:03 +0000 (Sat, 25 Dec 2010)
+%% Modified by Dazhi Jiang, 2016-06-11 14:31:45 +0800 (Sat, 11 Jun 2016)
 %% A modified alias of \@dlut@pgf@externalexpensivetrue
 %% It allows to specify the main document.
 \newcommand{\@dlut@pgf@externalmainfile@set}[1]{%
 	\if@dlut@pstricks@fig
 		\@dlut@pgf@externalexpensivefalse
 	\else
-	% \def\dlut@pgf@externalexpensivetrue#1{%
-    %% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
-	% \usepgfplotslibrary{external}
-	\@dlut@pgf@externalexpensivetrue@orig
-	\tikzexternalize[
-		prefix=Figs/pdf/pgf-ex-,
-		export=false, % needs to be activated individually
-		mode=list and make,
-		verbose IO=false,
-		% export=true,% FASTER FOR DEBUGGING
-	]{#1}
-    %% !!!
-	%% Changed by Dazhi Jiang - 2016-06-10
-	%% The following line is commented since the new definition of
-	%% \tikzexternalize in PGF cvs
-	% {pgfplots}
-	\tikzifexternalizing{%
-		\nofiles
-	}{}%
+        %% - Load \usepgfplotslibrary{external}, if it hasn't been loaded yet
+        % \usepgfplotslibrary{external}
+        \@dlut@pgf@externalexpensivetrue@orig
+        \tikzexternalize[%
+            prefix=Figs/pdf/pgf-ex-,
+            export=false,  %$ needs to be activated individually
+            mode=list and make,
+            verbose IO=false,
+            % export=true, %% FASTER FOR DEBUGGING
+        ]{#1}
+        %% !!!
+        %% Changed by Dazhi Jiang - 2016-06-10
+        %% The following line is commented since the new definition of
+        %% \tikzexternalize in PGF cvs
+        % {pgfplots}
+        \tikzifexternalizing{\nofiles}{}%
+    \fi
+}
+%% END: A modified alias of \pgfplotsmanualexternalexpensivetrue
+
+%%   - IF for the single figure externalisation
+\newif\if@dlut@fig@pgf@is@expensive
+
+%%   - Write this macro directly in front of \begin{codeexample} (without arguments):
+\def\cmd@dlut@pgf@export@fig{%
+	\if@dlut@pgf@externalexpensive
+		\@dlut@fig@pgf@is@expensivetrue
+	\else
+		\message{[NOTE: I am now about to typeset an expensive example. %
+        You will need to ENLARGE YOUR TeX MEMORY CAPACITIES if this fails.]}%
+	\fi
+	\if@dlut@fig@pgf@is@expensive
+		\pgfkeys{/tikz/external/export=true}%
+		\global\@dlut@fig@pgf@is@expensivefalse
 	\fi
 }%
-%% END: A modified alias of \pgfplotsmanualexternalexpensivetrue
+
+%%   - Define keys for pgf externalisation
+\pgfkeys{%
+	/dlut/.cd,
+	%% - Key to enable the externalisation
+	pgf/makeexternalfig/.code={\cmd@dlut@pgf@export@fig},
+    %% - Key for changing the prefix of the externalising file name
+	pgf/externalprefix/.code={\tikzsetexternalprefix{#1}},
+    %% - Key for activing the externalisation and specifying the file name
+	pgf/makenextfig/.code={\cmd@dlut@pgf@export@fig\tikzsetnextfilename{#1}},
+	%% - Declare an option key to control the activity of externalisation
+	pgf/externalising/.is if=@dlut@pgf@externalexpensive,
+    %%   - Default, true
+	pgf/externalising/.default=true,
+    %% - Key for specifying the main document (\jobname).
+    %%   Note that this key has to be set to the name of your main document in
+    %%   the preamble. The externalising is actived after setting up by default.
+	pgf/externalmainfile/.code={\@dlut@pgf@externalmainfile@set{#1}},
+    pgf/externalmainfile/.default=DLUTThesis,
+    % pgf/externalmainfile/.initial=DLUTThesis,
+}
+
+
 %% ------------------------------------------------------------
 
 
