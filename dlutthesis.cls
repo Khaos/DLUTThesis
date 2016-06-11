@@ -927,6 +927,14 @@
     % pgf/externalmainfile/.initial=DLUTThesis,
 }
 
+%%   - Solve the incompatible issue of biblatex (defernumbers) and pgf/TikZ
+%%     (externalization library)
+\newcommand{\fixbiblatexpgf}{%
+	\tikzifexternalizing{%
+		\ExecuteBibliographyOptions{defernumbers=false}%
+	}{}
+}
+
 %% END: * PGF/TikZ
 %% ------------------------------------------------------------
 
