@@ -17,7 +17,7 @@
 
 - [pgf文档](http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf)
 中Externalization Graphics一章，
-- 文档类定义文件dluthesis.cls中相关代码。
+- 文档类定义文件[dlutthesis.cls](https://github.com/Khaos/DLUTThesis/blob/master/dlutthesis.cls)中相关代码。
 
 对于一般用户，可以忽略具体的实现细节，直接使用预绘制接口，使用方法如下：
 
@@ -33,7 +33,7 @@
     \begin{figure}[!htbp]
     	\centering
     	\dlutset{pgf/makenextfig=pdf-filename}
-    	\input{Figs/Src/tikz-filename.tikz}
+    	\input{tikz-filename.tikz}
     	\caption{...}
     	\label{fig:id}
     \end{figure}%
