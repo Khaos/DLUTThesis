@@ -165,15 +165,17 @@ Line 2
 \section{图}{Figures}
 \label{sec:figures}
 
-\begin{figure}[!htbp]
+\begin{figure}[htp]
 	\centering
 	EXAMPLE FIGURE WITH BITWONUMCAPTION
 	\bicaption[fig:bi1]%
 		{}{长\cs{bicaption}}%
-		{Figure}{Long \cs{bicaption}}
+		{Fig.}{Long \cs{bicaption}}
 \end{figure}
 
-\begin{figure}[!htbp]
+道可道，非常道。名可名，非常名。无名天地之始。有名万物之母。
+
+\begin{figure}[h]
 	\centering
 	% \dlutset{pgf/makeexternalfig}
 	\dlutset{pgf/makenextfig=c-IP}
@@ -181,6 +183,27 @@ Line 2
 	\caption{Inverted Pendulum.}
 	\label{fig:IP}
 \end{figure}
+\begin{figure}[h]
+	\centering
+	% \dlutset{pgf/makenextfig=c-IP}
+	% \input{Figs/Src/IP.tkz}
+	EXAMPLE FIGURE WITH BITWONUMCAPTION
+	\bicaption[fig:bi2]%
+		{}{连续插图}%
+		{Fig.}{Another figure}
+\end{figure}
+
+
+道可道，非常道。名可名，非常名。无名天地之始。有名万物之母。
+
+\begin{figure}[b]
+	\centering
+	EXAMPLE FIGURE WITH BITWONUMCAPTION
+	\bicaption[fig:bi3]%
+		{}{居于页面底部的插图}%
+		{Fig.}{A bottom figure}
+\end{figure}
+
 
 
 \chapter{中文}{Chinese} % start of your main text

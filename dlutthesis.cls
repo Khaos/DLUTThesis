@@ -780,10 +780,47 @@
 
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%% 4. Flotats
+%% 7. Flotats
 %% Created by Dazhi Jiang,
 
-%% # TODO:10 2016-06-08 Set up the format of floats
+%% # DONE: x 2016-06-12 2016-06-08 Set up the format of floats
+
+%% * Float placement parameters
+%%   - Fractions
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.65}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+
+%%   - Counters
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+\setcounter{dbltopnumber}{4}
+
+%% * Spaces
+%%   - Vertical space between floats
+\setlength{\floatsep}{\baselineskip}
+%%   - Vertical space between a top/bottom float and suceeding/preceeding text
+\setlength{\textfloatsep}{\baselineskip}
+%%   - Vertical space above and below an h float
+\setlength{\intextsep}{\baselineskip}
+
+%% * Caption fonts, using defaults
+% \captionnamefont{\normalfont}
+% \captiontitlefont{\normalfont}
+
+%% * Caption width
+% \normalcaptionwidth
+\changecaptionwidth
+%% !!! Memoir bugs ???
+%%   - Somehow, the \textwidth is changed in figure evironment. So I define
+%%     a width ratio which is over than 1.
+\def\@dlut@caption@width@ratio{.9}
+\captionwidth{\@dlut@caption@width@ratio\linewidth}
+% \captionwidth{1.025\textwidth}
 
 %% END: Floats
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1163,11 +1200,6 @@
 %% * Indentation after the chapter
 \indentafterchapter
 
-%% * Floating parameters
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.65}
-\renewcommand{\floatpagefraction}{0.60}
 
 \endinput
 

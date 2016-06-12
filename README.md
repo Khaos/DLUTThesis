@@ -34,7 +34,7 @@
 中Externalization Graphics一章，
 - 文档类定义文件[dlutthesis.cls](https://github.com/Khaos/DLUTThesis/blob/master/dlutthesis.cls)中相关代码。
 
-对于一般用户，可以忽略具体的实现细节，直接使用预绘制接口，使用方法如下：
+对于一般用户，可以忽略具体的实现细节，直接使用预绘制接口，方法如下：
 
 1. 在主文档preamble部分指定主文档名称，例如
 

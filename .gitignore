@@ -27,6 +27,7 @@ recycle
 
 Figs/pdf/*.*
 !Figs/pdf/*.pdf
+Figs/pdf/pgf*.pdf
 Figs/Src/*.*
 !Figs/Src/*.tkz
 !Figs/Src/*.tikz
