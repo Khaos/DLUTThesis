@@ -271,7 +271,7 @@
 %% 4. Titles
 %% Created by Dazhi Jiang, 2016-05-31 05:43:46 +0800 (Tue, 31 May 2016)
 
-%% # DONE:30 x 2016-06-01 2016-05-31 Define the title page
+%% # DONE:40 x 2016-06-01 2016-05-31 Define the title page
 %% * IFs for elements in the title page
 \newif\if@dlut@titlepage@thesis@exist
 \newif\if@dlut@titlepage@title@exist
@@ -529,7 +529,7 @@
 	\fi
 }
 
-%% # DONE:40 x 2016-06-02 2016-06-01 Plagiarism declaration
+%% # DONE:50 x 2016-06-02 2016-06-01 Plagiarism declaration
 \newcommand{\makedeclaration}{%
     \begin{alwayssingle}
         \thispagestyle{empty}
@@ -545,7 +545,7 @@
 %% 5. Headings
 %% Created by Dazhi Jiang, 2016-06-02 15:20:11 +0800 (Thu, 02 Jun 2016)
 
-%% # DONE:60 x 2016-06-03 2016-06-02 Define the chapter headings
+%% # DONE:70 x 2016-06-03 2016-06-02 Define the chapter headings
 
 %% * The '\@dlut@chapter@heading' macro saves the current chapter heading style,
 %%   default value, 'default'.
@@ -602,10 +602,10 @@
 	\renewcommand*{\printchaptername}{\centering \chapnamefont \@chapapp}
 }
 
-%% # DONE:50 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
+%% # DONE:60 x 2016-06-05 2016-06-03 The chapter number of appendix is not displayed.
 %%     Put \backmatter after the appendix
 
-%% # DONE:20 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
+%% # DONE:30 x 2016-06-06 2016-06-02 Define the section/subsection/... headings
 %% * Define the chapter heading keys
 \pgfkeys{%
 	/dlut/.cd,
@@ -763,7 +763,7 @@
 		\protect\numberline{\csname the#1\endcsname} #2}%
 }
 
-%% # DONE:10 x 2016-06-07 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
+%% # DONE:20 x 2016-06-07 2016-06-05 Remove ToC from ToC (and LoF, LoT, etc.).
 %%     This can be done by using the star version of CFT commands, see the main
 %%     TeX files.
 
@@ -783,7 +783,7 @@
 %% 4. Flotats
 %% Created by Dazhi Jiang,
 
-%% # TODO: 2016-06-08 Set up the format of floats
+%% # TODO:10 2016-06-08 Set up the format of floats
 
 %% END: Floats
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -793,6 +793,7 @@
 %% 8. Graphics
 %% Created by Dazhi Jiang, 2016-06-09 08:18:38 +0800 (Thu, 09 Jun 2016)
 
+%% ------------------------------------------------------------
 %% * PSTricks
 %%   - Define IFs for PSTricks
 \newif\if@dlut@pstricks@load
@@ -827,6 +828,9 @@
 		\setlength\PreviewBorder{0.1pt}
 	\fi
 }
+
+%% END: * PSTricks
+%% ------------------------------------------------------------
 
 
 %% ------------------------------------------------------------
@@ -939,6 +943,207 @@
 %% ------------------------------------------------------------
 
 
+%% ------------------------------------------------------------
+%% * pgfplots
+%%   - Define color themes for ggplot2-like style
+%%     - GGPLOTS default theme
+\definecolor[named]{ggplotDefaultBG}{rgb}{0.90,0.90,0.90}
+\definecolor[named]{ggplotDefaultMajorGrid}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotDefaultMinorGrid}{rgb}{0.95,0.95,0.95}
+\definecolor[named]{ggplotDefaultMajorTick}{rgb}{0.50,0.50,0.50}
+\definecolor[named]{ggplotDefaultMinorTick}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotDefaultAxisBox}{rgb}{0.00,0.00,0.00}
+
+\newlength{\ggplotDefaultMajorTickLW}
+\setlength{\ggplotDefaultMajorTickLW}{0.6pt}
+\newlength{\ggplotDefaultMinorTickLW}
+\setlength{\ggplotDefaultMinorTickLW}{0.0pt}
+\newlength{\ggplotDefaultMajorGridLW}
+\setlength{\ggplotDefaultMajorGridLW}{0.6pt}
+\newlength{\ggplotDefaultMinorGridLW}
+\setlength{\ggplotDefaultMinorGridLW}{0.3pt}
+\newlength{\ggplotDefaultAxisBoxLW}
+\setlength{\ggplotDefaultAxisBoxLW}{0.3pt}
+
+%%     - GGPLOTS black-white theme
+\definecolor[named]{ggplotBWBG}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotBWMajorGrid}{rgb}{0.90,0.90,0.90}
+\definecolor[named]{ggplotBWMinorGrid}{rgb}{0.98,0.98,0.98}
+\definecolor[named]{ggplotBWMajorTick}{rgb}{0.00,0.00,0.00}
+\definecolor[named]{ggplotBWMinorTick}{rgb}{1.00,1.00,1.00}
+\definecolor[named]{ggplotBWAxisBox}{rgb}{0.50,0.50,0.50}
+
+\newlength{\ggplotBWMajorTickLW}
+\setlength{\ggplotBWMajorTickLW}{0.2pt}
+\newlength{\ggplotBWMinorTickLW}
+\setlength{\ggplotBWMinorTickLW}{0.0pt}
+\newlength{\ggplotBWMajorGridLW}
+\setlength{\ggplotBWMajorGridLW}{0.2pt}
+\newlength{\ggplotBWMinorGridLW}
+\setlength{\ggplotBWMinorGridLW}{0.6pt}
+\newlength{\ggplotBWAxisBoxLW}
+\setlength{\ggplotBWAxisBoxLW}{0.3pt}
+
+%%   - Define theme styles
+\pgfplotsset{
+	dlut/pgfplots/ggplot/default/.style = {
+		tick align=outside,
+		tickpos=left,
+		major tick style = {color=ggplotDefaultMajorTick,
+			line width=\ggplotDefaultMajorTickLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor tick style = {color=ggplotDefaultMinorTick,
+			line width=\ggplotDefaultMinorTickLW},
+		major grid style = {color=ggplotDefaultMajorGrid,
+			line width=\ggplotDefaultMajorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor grid style = {color=ggplotDefaultMinorGrid,
+			line width=\ggplotDefaultMinorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		outer axis line style = {color=ggplotDefaultAxisBox,
+			line width=\ggplotDefaultAxisBoxLW,
+			fill opacity=1.00},
+		grid=both,
+		minor tick num=1,
+		axis background/.style={fill=ggplotDefaultBG},
+		tick label style={font=\small},
+		label style={font=\small},
+		legend style={font=\footnotesize,
+			at={(1.03,0.5)}, anchor=west,
+			draw=ggplotDefaultAxisBox, fill=ggplotDefaultBG,
+			line width=\ggplotDefaultAxisBoxLW},
+	},
+	dlut/pgfplots/ggplot/BW/.style = {
+		tick align=outside,
+		tickpos=left,
+		major tick style = {color=ggplotBWMajorTick,
+			line width=\ggplotBWMajorTickLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor tick style = {color=ggplotBWMinorTick,
+			line width=\ggplotBWMinorTickLW},
+		major grid style = {color=ggplotBWMajorGrid,
+			line width=\ggplotBWMajorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		minor grid style = {color=ggplotBWMinorGrid,
+			line width=\ggplotBWMinorGridLW,
+			line cap=round, line join=round,
+			fill opacity=0.00},
+		outer axis line style = {color=ggplotBWAxisBox,
+			line width=\ggplotBWAxisBoxLW,
+			fill opacity=1.00},
+		grid=both,
+		minor tick num=1,
+		axis background/.style={fill=ggplotBWBG},
+		tick label style={font=\small},
+		label style={font=\small},
+		legend style={font=\footnotesize,
+			at={(1.03,0.5)}, anchor=west,
+			draw=ggplotBWAxisBox, fill=ggplotBWBG,
+			line width=\ggplotBWAxisBoxLW},
+	},
+}
+
+%%   - Define plot cycle list
+%%     - Color Sets, from http://colorbrewer2.org/
+%%       - SetI
+\definecolor[named]{SetICi}{RGB}{228,26,28}
+\definecolor[named]{SetICii}{RGB}{55,126,184}
+\definecolor[named]{SetICiii}{RGB}{77,175,74}
+\definecolor[named]{SetICiv}{RGB}{152,78,163}
+\definecolor[named]{SetICv}{RGB}{255,127,0}
+\definecolor[named]{SetICvi}{RGB}{255,255,51}
+\definecolor[named]{SetICvii}{RGB}{166,86,40}
+\definecolor[named]{SetICviii}{RGB}{247,129,191}
+
+%%       - SetII
+\definecolor[named]{SetIICi}{RGB}{102,194,165}
+\definecolor[named]{SetIICii}{RGB}{252,141,98}
+\definecolor[named]{SetIICiii}{RGB}{141,160,203}
+\definecolor[named]{SetIICiv}{RGB}{231,138,195}
+\definecolor[named]{SetIICv}{RGB}{166,216,84}
+\definecolor[named]{SetIICvi}{RGB}{255,217,47}
+\definecolor[named]{SetIICvii}{RGB}{229,196,148}
+\definecolor[named]{SetIICviii}{RGB}{179,179,179}
+
+%%       - SetIII
+\definecolor[named]{SetIIICi}{RGB}{141,211,199}
+\definecolor[named]{SetIIICii}{RGB}{255,255,179}
+\definecolor[named]{SetIIICiii}{RGB}{190,186,218}
+\definecolor[named]{SetIIICiv}{RGB}{251,128,114}
+\definecolor[named]{SetIIICv}{RGB}{128,177,211}
+\definecolor[named]{SetIIICvi}{RGB}{253,180,98}
+\definecolor[named]{SetIIICvii}{RGB}{179,222,105}
+\definecolor[named]{SetIIICviii}{RGB}{252,205,229}
+
+%%       - PastelI
+\definecolor[named]{PastelICi}{RGB}{251,180,174}
+\definecolor[named]{PastelICii}{RGB}{179,205,227}
+\definecolor[named]{PastelICiii}{RGB}{204,235,197}
+\definecolor[named]{PastelICiv}{RGB}{222,203,228}
+\definecolor[named]{PastelICv}{RGB}{254,217,166}
+\definecolor[named]{PastelICvi}{RGB}{255,255,204}
+\definecolor[named]{PastelICvii}{RGB}{229,216,189}
+\definecolor[named]{PastelICviii}{RGB}{253,218,236}
+
+%%       - PastelII
+\definecolor[named]{PastelIICi}{RGB}{179,226,205}
+\definecolor[named]{PastelIICii}{RGB}{253,205,172}
+\definecolor[named]{PastelIICiii}{RGB}{203,213,232}
+\definecolor[named]{PastelIICiv}{RGB}{244,202,228}
+\definecolor[named]{PastelIICv}{RGB}{230,245,201}
+\definecolor[named]{PastelIICvi}{RGB}{255,242,174}
+\definecolor[named]{PastelIICvii}{RGB}{241,226,204}
+\definecolor[named]{PastelIICviii}{RGB}{204,204,204}
+
+%%       - Accent
+\definecolor[named]{AccentCi}{RGB}{127,201,127}
+\definecolor[named]{AccentCii}{RGB}{190,174,212}
+\definecolor[named]{AccentCiii}{RGB}{253,192,134}
+\definecolor[named]{AccentCiv}{RGB}{255,255,153}
+\definecolor[named]{AccentCv}{RGB}{56,108,176}
+\definecolor[named]{AccentCvi}{RGB}{240,2,127}
+\definecolor[named]{AccentCvii}{RGB}{191,91,23}
+\definecolor[named]{AccentCviii}{RGB}{102,102,102}
+
+%%       - DarkII
+\definecolor[named]{DarkIICi}{RGB}{27,158,119}
+\definecolor[named]{DarkIICii}{RGB}{217,95,2}
+\definecolor[named]{DarkIICiii}{RGB}{117,112,179}
+\definecolor[named]{DarkIICiv}{RGB}{231,41,138}
+\definecolor[named]{DarkIICv}{RGB}{102,166,30}
+\definecolor[named]{DarkIICvi}{RGB}{230,171,2}
+\definecolor[named]{DarkIICvii}{RGB}{166,118,29}
+\definecolor[named]{DarkIICviii}{RGB}{102,102,102}
+
+%%       - Paired
+\definecolor[named]{PairedCi}{RGB}{166,206,227}
+\definecolor[named]{PairedCii}{RGB}{31,120,180}
+\definecolor[named]{PairedCiii}{RGB}{178,223,138}
+\definecolor[named]{PairedCiv}{RGB}{51,160,44}
+\definecolor[named]{PairedCv}{RGB}{251,154,153}
+\definecolor[named]{PairedCvi}{RGB}{227,26,28}
+\definecolor[named]{PairedCvii}{RGB}{253,191,111}
+\definecolor[named]{PairedCviii}{RGB}{255,127,0}
+
+%%     - Cycle Lists
+\pgfplotscreateplotcyclelist{DLUTThesisCLSetI}{%
+	{SetICi},
+	{SetICii},
+	{SetICiii},
+	{SetICiv},
+	{SetICv},
+	{SetICvi},
+	{SetICvii},
+	{SetICviii}
+}
+
+%% END: * pgfplots
+%% ------------------------------------------------------------
 
 %% END: Graphics
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -954,7 +1159,7 @@
 
 %% Tmp
 
-%% # TODO:10 2016-06-05 Make a key to control the indentation
+%% # TODO:20 2016-06-05 Make a key to control the indentation
 %% * Indentation after the chapter
 \indentafterchapter
 
