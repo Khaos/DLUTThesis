@@ -1,65 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>大连理工大学博士学位论文模板 by Khaos</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Dlutthesis by Khaos</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Dlutthesis</h1>
-        <h2>Thesis template for Dalian University of Technology</h2>
-        <a href="https://github.com/Khaos/DLUTThesis" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+    <div class="wrapper">
+      <header>
+        <h1>大连理工大学博士学位论文模板</h1>
+        <p>Thesis template for Dalian University of Technology</p>
+        <p class="view"><a href="https://github.com/Khaos/DLUTThesis">View the Project on GitHub <small>Khaos/DLUTThesis</small></a></p>
+        <ul>
+          <li><a href="https://github.com/Khaos/DLUTThesis/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Khaos/DLUTThesis/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Khaos/DLUTThesis">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="大连理工大学博士论文模版" class="anchor" href="#%E5%A4%A7%E8%BF%9E%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%8D%9A%E5%A3%AB%E8%AE%BA%E6%96%87%E6%A8%A1%E7%89%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>大连理工大学博士论文模版</h1>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>大连理工大学博士论文模版</h1>
+<h2>
+<a id="安装" class="anchor" href="#%E5%AE%89%E8%A3%85" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装</h2>
 
-<p><strong>made it for Linlin</strong></p>
+<h2>
+<a id="使用说明" class="anchor" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用说明</h2>
 
-<h2>安装</h2>
+<h3>
+<a id="图表" class="anchor" href="#%E5%9B%BE%E8%A1%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>图表</h3>
 
-<h2>参考文献</h2>
+<h4>
+<a id="pgftikz" class="anchor" href="#pgftikz" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pgf/tikz</h4>
+
+<p>本模板默认载入pgf系列宏包（其中包括pgf、tikz、pgfplots与pgfplotstable四个宏包）。这些
+宏包提供了丰富的图形命令以满足论文写作中的作图需求。由于博士论文中往往插图较多，而这些插
+图又多以pgf/tikz宏包来完成，那么如果不进行特殊的处理的话，则在写作进行当中，每次编译都
+会将大量的时间消耗在绘图过程中。为了减少由此带来的影响，本模板提供了图形的预绘制接口，从
+而加快写作中的编译过程。这部分接口基于pgf中的external库，详细使用方法以及在本模板中的调
+用方式请参考</p>
 
 <ul>
-<li><a href="http://gs.dlut.edu.cn/showmorexuewei.asp?id=77&amp;DeptSortName=%C2%DB%CE%C4%C4%A3%B0%E6">大连理工大学研究生院 -- 论文模版</a></li>
+<li>
+<a href="http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf">pgf文档</a>
+中Externalization Graphics一章，</li>
+<li>文档类定义文件<a href="https://github.com/Khaos/DLUTThesis/blob/master/dlutthesis.cls">dlutthesis.cls</a>中相关代码。</li>
+</ul>
+
+<p>对于一般用户，可以忽略具体的实现细节，直接使用预绘制接口，使用方法如下：</p>
+
+<ol>
+<li>
+<p>在主文档preamble部分指定主文档名称，例如</p>
+
+<div class="highlight highlight-text-tex"><pre><span class="pl-c1">\dlutset</span>{pgf/externalmainfile=DLUTThesis}</pre></div>
+</li>
+<li>
+<p>正文部分需要插入tikz图形的部分，以如下格式插入图形</p>
+
+<div class="highlight highlight-text-tex"><pre><span class="pl-c1">\begin</span>{figure}[!htbp]
+    <span class="pl-c1">\centering</span>
+    <span class="pl-c1">\dlutset</span>{pgf/makenextfig=pdf-filename}
+    <span class="pl-c1">\input</span>{tikz-filename.tikz}
+    <span class="pl-c1">\caption</span>{...}
+    <span class="pl-c1">\label</span>{fig:id}
+<span class="pl-c1">\end</span>{figure}<span class="pl-c">%</span></pre></div>
+</li>
+<li>
+<p>预绘制图形（以xelatex命令为例）</p>
+
+<div class="highlight highlight-source-shell"><pre>xelatex -shell-escape -halt-on-error -interaction=batchmode -jobname <span class="pl-s"><span class="pl-pds">"</span>pdf-filename<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>DLUTThesis<span class="pl-pds">"</span></span></pre></div>
+</li>
+<li>
+<p>主文档中插入图形</p>
+
+<div class="highlight highlight-source-shell"><pre>xelatex -shell-escape DLUTThesis.tex</pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="参考文献" class="anchor" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>参考文献</h2>
+
+<ul>
+<li><a href="http://gs.dlut.edu.cn/info/1099/7743.htm">大连理工大学研究生院 -- 论文模版</a></li>
 <li>
 <a href="http://code.google.com/p/dlutlatextemplate/">dlutlatextemplate</a>  根据大连理工大学研究生院提供的Word学位论文模版制作的LaTeX模版</li>
 </ul>
-        </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/Khaos/DLUTThesis/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/Khaos/DLUTThesis/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LICENSE</h2>
 
-          <p class="repo-owner"><a href="https://github.com/Khaos/DLUTThesis"></a> is maintained by <a href="https://github.com/Khaos">Khaos</a>.</p>
+<p>Copyright [2016] [Dazhi Jiang]</p>
 
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+      </section>
     </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/Khaos">Khaos</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-29598731-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
-  
   </body>
 </html>
