@@ -1,8 +1,24 @@
-# 大连理工大学博士论文模版
+# 大连理工大学博士学位论文模版
 
 ## 安装
 
 ## 使用说明
+
+### 封面
+
+- [ ] 如何定义封面元素
+
+<!-- TODO: 2016-06-12 定义封面元素 -->
+
+### 目录
+
+#### 中文目录
+
+中文目录
+
+#### 英文目录
+
+英文目录
 
 ### 图表
 
@@ -56,6 +72,11 @@
 
 - [大连理工大学研究生院 -- 论文模版](http://gs.dlut.edu.cn/info/1099/7743.htm)
 - [dlutlatextemplate](http://code.google.com/p/dlutlatextemplate/)  根据大连理工大学研究生院提供的Word学位论文模版制作的LaTeX模版
+
+## TODO
+
+- [ ] Floats
+- [x] PGF/TikZ externalisation
 
 ## LICENSE
 
