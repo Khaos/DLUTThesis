@@ -1,5 +1,29 @@
 # 大连理工大学博士学位论文模版
 
+## Tasks
+
+### DONE
+
+- 字体配置
+- 页面设置
+- 页面样式，例如，页眉、页脚等
+- 论文封面与独创性声明
+- 章节标题
+- 目录，中英文章节目录、图目录和表目录
+- 浮动体设置
+- 插图设置
+
+### DOING
+
+- 参考文献
+
+### TODO
+
+- 交叉引用
+- 文档链接
+- 中英文摘要
+- 数学公式排版
+
 ## 安装
 
 ## 使用说明
@@ -82,10 +106,6 @@
 - [大连理工大学研究生院 -- 论文模版](http://gs.dlut.edu.cn/info/1099/7743.htm)
 - [dlutlatextemplate](http://code.google.com/p/dlutlatextemplate/)  根据大连理工大学研究生院提供的Word学位论文模版制作的LaTeX模版
 
-## TODO
-
-- [ ] Floats
-- [x] PGF/TikZ externalisation
 
 ## LICENSE
 
