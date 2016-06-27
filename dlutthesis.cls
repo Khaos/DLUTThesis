@@ -1,4 +1,4 @@
-%% -*- Mode: LaTeX Memoir; tab-width: 4;
+%% -*- mode: TeX; tab-width: 4;
 
 %% dlutthesis.cls    The LaTeX Class File for DLUT Doctor Thesis
 %%
