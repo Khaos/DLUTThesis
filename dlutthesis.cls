@@ -889,7 +889,6 @@
         \tikzexternalize[
             prefix=Figs/pdf/pgf-ex-,
             export=false, %% needs to be activated individually
-            mode=list and make,
             verbose IO=false,
             % export=true, %% FASTER FOR DEBUGGING
         ]
@@ -916,7 +915,6 @@
         \tikzexternalize[%
             prefix=Figs/pdf/pgf-ex-,
             export=false,  %$ needs to be activated individually
-            mode=list and make,
             verbose IO=false,
             % export=true, %% FASTER FOR DEBUGGING
         ]{#1}
@@ -966,6 +964,8 @@
 	pgf/externalmainfile/.code={\@dlut@pgf@externalmainfile@set{#1}},
     pgf/externalmainfile/.default=DLUTThesis,
     % pgf/externalmainfile/.initial=DLUTThesis,
+	%% - Key to set the external mode, merely an alias
+	pgf/externalmode/.forward to=/tikz/external/mode
 }
 
 %%   - Solve the incompatible issue of biblatex (defernumbers) and pgf/TikZ

@@ -71,7 +71,7 @@
     \dlutset{pgf/externalmainfile=DLUTThesis}
     ```
 
-2. 正文部分需要插入tikz图形的部分，以如下格式插入图形
+1. 在正文需要插入tikz图形的位置，以如下格式插入图形
 
     ```latex
     \begin{figure}[!htbp]
@@ -83,17 +83,31 @@
     \end{figure}%
     ```
 
-3. 预绘制图形（以`xelatex`命令为例）
+1. 编译主文档
+
+    ```shell
+    xelatex -shell-escape DLUTThesis.tex
+    ```
+
+    默认采用增量编译的预绘制模式，即每次只重新绘制改动过的tikz图形。
+
+1. （可选）进阶使用
+
+    用户还可手动修改预绘制模式，例如在preamble如下设置后，
+
+    ```latex
+    \dlutset{
+    	pgf/externalmode=list and make
+    }
+    ```
+
+    就支持先单独编译每个tikz图形（以下 `pdf-filename` 代表插入tikz图形时设置的pdf文件名），再编译主文档。
 
     ```shell
     xelatex -shell-escape -halt-on-error -interaction=batchmode -jobname "pdf-filename" "DLUTThesis"
     ```
 
-4. 主文档中插入图形
-
-    ```shell
-    xelatex -shell-escape DLUTThesis.tex
-    ```
+    选项 `pgf/externalmode` 是pgf选项 `/tikz/external/mode` 的别名，完整用法可查询pgf文档。
 
 ### 参考文献及其引用
 
