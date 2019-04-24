@@ -889,7 +889,6 @@
         \tikzexternalize[
             prefix=Figs/pdf/pgf-ex-,
             export=false, %% needs to be activated individually
-            mode=list and make,
             verbose IO=false,
             % export=true, %% FASTER FOR DEBUGGING
         ]
@@ -916,7 +915,6 @@
         \tikzexternalize[%
             prefix=Figs/pdf/pgf-ex-,
             export=false,  %$ needs to be activated individually
-            mode=list and make,
             verbose IO=false,
             % export=true, %% FASTER FOR DEBUGGING
         ]{#1}
@@ -952,20 +950,22 @@
 	/dlut/.cd,
 	%% - Key to enable the externalisation
 	pgf/makeexternalfig/.code={\cmd@dlut@pgf@export@fig},
-    %% - Key for changing the prefix of the externalising file name
+	%% - Key for changing the prefix of the externalising file name
 	pgf/externalprefix/.code={\tikzsetexternalprefix{#1}},
-    %% - Key for activing the externalisation and specifying the file name
+	%% - Key for activing the externalisation and specifying the file name
 	pgf/makenextfig/.code={\cmd@dlut@pgf@export@fig\tikzsetnextfilename{#1}},
 	%% - Declare an option key to control the activity of externalisation
 	pgf/externalising/.is if=@dlut@pgf@externalexpensive,
-    %%   - Default, true
+	%%   - Default, true
 	pgf/externalising/.default=true,
-    %% - Key for specifying the main document (\jobname).
-    %%   Note that this key has to be set to the name of your main document in
-    %%   the preamble. The externalising is actived after setting up by default.
+	%% - Key for specifying the main document (\jobname).
+	%%   Note that this key has to be set to the name of your main document in
+	%%   the preamble. The externalising is actived after setting up by default.
 	pgf/externalmainfile/.code={\@dlut@pgf@externalmainfile@set{#1}},
-    pgf/externalmainfile/.default=DLUTThesis,
-    % pgf/externalmainfile/.initial=DLUTThesis,
+	pgf/externalmainfile/.default=DLUTThesis,
+	% pgf/externalmainfile/.initial=DLUTThesis,
+	%% - Key to set the external mode, merely an alias
+	pgf/externalmode/.forward to=/tikz/external/mode
 }
 
 %%   - Solve the incompatible issue of biblatex (defernumbers) and pgf/TikZ
